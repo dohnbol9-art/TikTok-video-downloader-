@@ -10,19 +10,19 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-        {/* Anti-Slop: Editorial kicker without pills or mechanical comments */}
+        {/* Editorial kicker */}
         <div className="mb-3 text-xs font-semibold tracking-wider text-rose-500 uppercase dark:text-rose-400">
-          Fast & Simple TikTok Video Downloads
+          Online Video Downloader & Converter
         </div>
 
-        {/* Primary Headline with text-wrap: balance */}
+        {/* Primary Headline with target keywords */}
         <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl dark:text-white" style={{ textWrap: 'balance' }}>
-          Download TikTok Videos Fast
+          TikTok Video Downloader Without Watermark
         </h1>
 
-        {/* Subtitle */}
+        {/* Subtitle with high-conversion keywords */}
         <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 sm:text-lg dark:text-slate-300" style={{ textWrap: 'balance' }}>
-          Paste a supported TikTok video URL and download available content in seconds.
+          Download TikTok videos in Full HD 1080p MP4 or high quality MP3 audio fast, free, and without watermark on any device.
         </p>
 
         {/* Visual asset with measured scrim and resilient fallback */}

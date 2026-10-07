@@ -12,6 +12,7 @@ import { HowItWorks } from './components/HowItWorks';
 import { Features } from './components/Features';
 import { FaqSection } from './components/FaqSection';
 import { AboutSection } from './components/AboutSection';
+import { SeoContentSection } from './components/SeoContentSection';
 import { Footer } from './components/Footer';
 import { DownloadHistory } from './components/DownloadHistory';
 import { AdminDashboard } from './components/AdminDashboard';
@@ -97,6 +98,8 @@ export default function App() {
           <Features />
 
           <FaqSection />
+
+          <SeoContentSection />
 
           <AboutSection />
 
