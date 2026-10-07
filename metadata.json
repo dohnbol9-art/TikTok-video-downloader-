@@ -1,0 +1,8 @@
+{
+  "name": "QuickTok - Fast TikTok Video Downloader",
+  "description": "Download permitted TikTok videos quickly with a fast, simple, and mobile-friendly TikTok video downloader. It should also support batch downloads and high-definition resolution options for all users.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
