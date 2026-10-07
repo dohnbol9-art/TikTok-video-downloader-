@@ -44,31 +44,31 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenHistory, hist
         <nav className="hidden items-center gap-6 md:flex">
           <button
             onClick={() => scrollTo('downloader')}
-            className="text-xs font-semibold text-slate-600 transition-colors hover:text-rose-500 dark:text-slate-300 dark:hover:text-rose-400"
+            className="text-xs font-semibold text-slate-600 transition-colors hover:text-rose-500 dark:text-[#b8bec9] dark:hover:text-rose-400"
           >
             Downloader
           </button>
           <button
             onClick={() => scrollTo('how-it-works')}
-            className="text-xs font-semibold text-slate-600 transition-colors hover:text-rose-500 dark:text-slate-300 dark:hover:text-rose-400"
+            className="text-xs font-semibold text-slate-600 transition-colors hover:text-rose-500 dark:text-[#b8bec9] dark:hover:text-rose-400"
           >
             How It Works
           </button>
           <button
             onClick={() => scrollTo('features')}
-            className="text-xs font-semibold text-slate-600 transition-colors hover:text-rose-500 dark:text-slate-300 dark:hover:text-rose-400"
+            className="text-xs font-semibold text-slate-600 transition-colors hover:text-rose-500 dark:text-[#b8bec9] dark:hover:text-rose-400"
           >
             Features
           </button>
           <button
             onClick={() => scrollTo('faq')}
-            className="text-xs font-semibold text-slate-600 transition-colors hover:text-rose-500 dark:text-slate-300 dark:hover:text-rose-400"
+            className="text-xs font-semibold text-slate-600 transition-colors hover:text-rose-500 dark:text-[#b8bec9] dark:hover:text-rose-400"
           >
             FAQ
           </button>
           <button
             onClick={() => scrollTo('about')}
-            className="text-xs font-semibold text-slate-600 transition-colors hover:text-rose-500 dark:text-slate-300 dark:hover:text-rose-400"
+            className="text-xs font-semibold text-slate-600 transition-colors hover:text-rose-500 dark:text-[#b8bec9] dark:hover:text-rose-400"
           >
             About
           </button>
@@ -81,7 +81,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenHistory, hist
             onClick={onOpenHistory}
             title="Download History"
             aria-label="View local download history"
-            className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+            className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:border-[#252a33] dark:text-[#b8bec9] dark:hover:bg-[#15181d] dark:hover:text-white"
           >
             <History className="h-4 w-4" />
             {historyCount > 0 && (
@@ -96,7 +96,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenHistory, hist
             onClick={onOpenAdmin}
             title="Admin Console"
             aria-label="Open server status and administration console"
-            className="hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900 sm:flex dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+            className="hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900 sm:flex dark:border-[#252a33] dark:text-[#b8bec9] dark:hover:bg-[#15181d] dark:hover:text-white"
           >
             <Shield className="h-4 w-4" />
           </button>
@@ -105,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenHistory, hist
           <button
             onClick={toggleTheme}
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition-all hover:bg-slate-100 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition-all hover:bg-slate-100 dark:border-[#252a33] dark:text-[#b8bec9] dark:hover:bg-[#15181d]"
           >
             {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
@@ -114,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenHistory, hist
           <button
             onClick={() => setMobileMenuOpen(prev => !prev)}
             aria-label="Toggle navigation menu"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 md:hidden dark:border-slate-800 dark:text-slate-300"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 md:hidden dark:border-[#252a33] dark:text-[#b8bec9]"
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -123,35 +123,35 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenHistory, hist
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="border-b border-slate-200 bg-white px-4 py-4 md:hidden dark:border-slate-800 dark:bg-slate-950">
+        <div className="border-b border-slate-200 bg-white px-4 py-4 md:hidden dark:border-[#252a33] dark:bg-[#0b0d10]">
           <div className="flex flex-col space-y-3">
             <button
               onClick={() => scrollTo('downloader')}
-              className="text-left text-sm font-medium text-slate-700 dark:text-slate-200"
+              className="text-left text-sm font-medium text-slate-700 dark:text-white"
             >
               Downloader
             </button>
             <button
               onClick={() => scrollTo('how-it-works')}
-              className="text-left text-sm font-medium text-slate-700 dark:text-slate-200"
+              className="text-left text-sm font-medium text-slate-700 dark:text-white"
             >
               How It Works
             </button>
             <button
               onClick={() => scrollTo('features')}
-              className="text-left text-sm font-medium text-slate-700 dark:text-slate-200"
+              className="text-left text-sm font-medium text-slate-700 dark:text-white"
             >
               Features
             </button>
             <button
               onClick={() => scrollTo('faq')}
-              className="text-left text-sm font-medium text-slate-700 dark:text-slate-200"
+              className="text-left text-sm font-medium text-slate-700 dark:text-white"
             >
               FAQ
             </button>
             <button
               onClick={() => scrollTo('about')}
-              className="text-left text-sm font-medium text-slate-700 dark:text-slate-200"
+              className="text-left text-sm font-medium text-slate-700 dark:text-white"
             >
               About QuickTok
             </button>
@@ -160,7 +160,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenHistory, hist
                 setMobileMenuOpen(false);
                 onOpenAdmin();
               }}
-              className="flex items-center gap-2 pt-2 text-left text-sm font-medium text-rose-500 dark:text-rose-400 border-t border-slate-100 dark:border-slate-800"
+              className="flex items-center gap-2 pt-2 text-left text-sm font-medium text-rose-500 dark:text-rose-400 border-t border-slate-100 dark:border-[#252a33]"
             >
               <Shield className="h-4 w-4" />
               Admin Status Console

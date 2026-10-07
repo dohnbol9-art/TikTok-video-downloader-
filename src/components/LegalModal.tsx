@@ -11,7 +11,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs">
-      <div className="flex max-h-[85vh] w-full max-w-2xl flex-col rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex max-h-[85vh] w-full max-w-2xl flex-col rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-[#252a33] dark:bg-[#15181d]">
         
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-200 p-4 sm:p-5 dark:border-slate-800">
@@ -31,10 +31,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-5 text-sm leading-relaxed text-slate-600 space-y-4 dark:text-slate-300">
+        <div className="flex-1 overflow-y-auto p-5 text-sm leading-relaxed text-slate-600 space-y-4 dark:text-[#b8bec9]">
           {type === 'terms' ? (
             <>
-              <div className="rounded-xl border border-amber-200 bg-amber-50 p-3.5 text-xs text-amber-900 dark:border-amber-900/50 dark:bg-amber-950/40 dark:text-amber-200">
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-3.5 text-xs text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200">
                 <div className="flex items-start gap-2">
                   <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
                   <div>
@@ -95,7 +95,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="border-t border-slate-200 bg-slate-50 px-5 py-3 text-right dark:border-slate-800 dark:bg-slate-950">
+        <div className="border-t border-slate-200 bg-slate-50 px-5 py-3 text-right dark:border-[#252a33] dark:bg-[#0b0d10]">
           <button
             type="button"
             onClick={onClose}

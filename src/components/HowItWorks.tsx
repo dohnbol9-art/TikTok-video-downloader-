@@ -32,7 +32,7 @@ export const HowItWorks: React.FC = () => {
         <h2 className="mt-1 text-lg font-bold tracking-tight text-slate-900 sm:text-2xl dark:text-white">
           How It Works
         </h2>
-        <p className="mx-auto mt-1 max-w-xl text-[11px] text-slate-600 sm:text-xs dark:text-slate-400">
+        <p className="mx-auto mt-1 max-w-xl text-[11px] text-slate-600 sm:text-xs dark:text-[#b8bec9]">
           Get your permitted video content saved in seconds without complex watermarks.
         </p>
       </div>
@@ -50,7 +50,7 @@ export const HowItWorks: React.FC = () => {
                   <span className="font-mono text-3xl font-extrabold text-slate-300 dark:text-slate-700">
                     {step.num}
                   </span>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-50 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-50 text-rose-600 dark:bg-rose-950 dark:text-rose-400">
                     <Icon className="h-5 w-5" />
                   </div>
                 </div>
@@ -59,7 +59,7 @@ export const HowItWorks: React.FC = () => {
                   {step.title}
                 </h3>
 
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                <p className="mt-2 text-sm text-slate-600 dark:text-[#b8bec9]">
                   {step.description}
                 </p>
               </div>

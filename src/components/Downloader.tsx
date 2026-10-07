@@ -292,13 +292,13 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
       <div className="mb-3 flex gap-2">
         <button
           onClick={() => setIsBatchMode(false)}
-          className={`flex-1 rounded-lg py-1.5 text-[10px] sm:text-xs font-bold transition-all ${!isBatchMode ? 'bg-rose-600 text-white shadow-md' : 'bg-white text-slate-600 border border-slate-200 dark:bg-slate-900/40 dark:border-slate-800 dark:text-slate-400'}`}
+          className={`flex-1 rounded-lg py-1.5 text-[10px] sm:text-xs font-bold transition-all ${!isBatchMode ? 'bg-rose-600 text-white shadow-md' : 'bg-white text-slate-600 border border-slate-200 dark:bg-[#15181d] dark:border-[#252a33] dark:text-[#b8bec9]'}`}
         >
           Single Link
         </button>
         <button
           onClick={() => setIsBatchMode(true)}
-          className={`flex-1 rounded-lg py-1.5 text-[10px] sm:text-xs font-bold transition-all ${isBatchMode ? 'bg-rose-600 text-white shadow-md' : 'bg-white text-slate-600 border border-slate-200 dark:bg-slate-900/40 dark:border-slate-800 dark:text-slate-400'}`}
+          className={`flex-1 rounded-lg py-1.5 text-[10px] sm:text-xs font-bold transition-all ${isBatchMode ? 'bg-rose-600 text-white shadow-md' : 'bg-white text-slate-600 border border-slate-200 dark:bg-[#15181d] dark:border-[#252a33] dark:text-[#b8bec9]'}`}
         >
           Batch Mode (Multi)
         </button>
@@ -311,7 +311,7 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
           <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase tracking-wider dark:text-slate-400">
             {isBatchMode ? 'Enter TikTok URLs (one per line):' : 'Paste TikTok Video URL:'}
           </span>
-          <span className="text-[9px] sm:text-[10px] text-rose-500 font-bold flex items-center gap-1 bg-rose-50 dark:bg-rose-950/30 px-2 py-0.5 rounded-full">
+          <span className="text-[9px] sm:text-[10px] text-rose-500 font-bold flex items-center gap-1 bg-rose-50 dark:bg-rose-950 px-2 py-0.5 rounded-full">
             <Sparkles className="h-2.5 w-2.5" />
             1080p HD Ready
           </span>
@@ -329,7 +329,7 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
                 onKeyDown={(e) => e.key === 'Enter' && validateAndProcess(url)}
                 placeholder="https://www.tiktok.com/@user/video/..."
                 disabled={status === 'VALIDATING' || status === 'PROCESSING'}
-                className="w-full rounded-lg border-2 border-slate-100 bg-slate-50/50 px-3 py-2 text-xs sm:text-sm font-medium text-slate-900 focus:border-rose-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-rose-500/5 dark:border-slate-800 dark:bg-slate-950/60 dark:text-white dark:focus:border-rose-500"
+                className="w-full rounded-lg border-2 border-slate-100 bg-slate-50/50 px-3 py-2 text-xs sm:text-sm font-medium text-slate-900 focus:border-rose-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-rose-500/5 dark:border-[#252a33] dark:bg-[#0b0d10] dark:text-white dark:focus:border-rose-500"
               />
               <div className="absolute right-1.5 top-1/2 flex -translate-y-1/2 items-center gap-1">
                 {url && (
@@ -350,7 +350,7 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
                 placeholder="https://www.tiktok.com/@user/video/123...&#10;https://vm.tiktok.com/XYZ..."
                 rows={3}
                 disabled={isProcessingBatch}
-                className="w-full rounded-lg border-2 border-slate-100 bg-slate-50/50 px-3 py-2 text-[11px] sm:text-xs font-medium text-slate-900 focus:border-rose-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-rose-500/5 dark:border-slate-800 dark:bg-slate-950/60 dark:text-white dark:focus:border-rose-500"
+                className="w-full rounded-lg border-2 border-slate-100 bg-slate-50/50 px-3 py-2 text-[11px] sm:text-xs font-medium text-slate-900 focus:border-rose-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-rose-500/5 dark:border-[#252a33] dark:bg-[#0b0d10] dark:text-white dark:focus:border-rose-500"
               />
               <div className="mt-1 flex justify-end gap-2">
                 <button onClick={handleClear} className="text-[9px] sm:text-[10px] font-bold text-slate-500 hover:text-rose-500">Clear All</button>
@@ -381,7 +381,7 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
 
         {/* Feedback / Error */}
         {!isBatchMode && status === 'ERROR' && (
-          <div className="mt-3 flex items-start gap-2 rounded-lg border border-rose-200 bg-rose-50 p-2.5 text-[11px] sm:text-xs text-rose-800 dark:border-rose-900/50 dark:bg-rose-950/40 dark:text-rose-200">
+          <div className="mt-3 flex items-start gap-2 rounded-lg border border-rose-200 bg-rose-50 p-2.5 text-[11px] sm:text-xs text-rose-800 dark:border-rose-900 dark:bg-rose-950 dark:text-rose-200">
             <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
             <span className="font-semibold">{errorMessage}</span>
           </div>
@@ -438,7 +438,7 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
                     </div>
                   </div>
                 ) : (
-                  <div className="rounded-lg border border-slate-200 bg-white p-2 sm:p-3 dark:border-slate-800 dark:bg-slate-900/40">
+                  <div className="rounded-lg border border-slate-200 bg-white p-2 sm:p-3 dark:border-[#252a33] dark:bg-[#15181d]">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2 overflow-hidden">
                         {item.status === 'PROCESSING' ? (

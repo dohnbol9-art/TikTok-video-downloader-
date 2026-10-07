@@ -7,12 +7,12 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenAdmin }) => {
   return (
-    <footer className="mt-20 border-t border-slate-200/80 bg-white dark:border-slate-800/80 dark:bg-[#0f1115]">
+    <footer className="mt-20 border-t border-slate-200/80 bg-white dark:border-[#252a33] dark:bg-[#101217]">
       
       {/* Responsible Use Notice Banner */}
-      <div className="border-b border-slate-100 bg-slate-50/50 py-3 text-center text-xs text-slate-500 dark:border-slate-800 dark:bg-[#0b0d10] dark:text-slate-400">
+      <div className="border-b border-slate-100 bg-slate-50/50 py-3 text-center text-xs text-slate-500 dark:border-[#252a33] dark:bg-[#0b0d10] dark:text-[#b8bec9]">
         <div className="mx-auto max-w-4xl px-4">
-          <span className="font-semibold text-slate-700 dark:text-slate-300">Responsible Use:</span> Only download content when you have the right or permission to do so. Respect copyright, platform terms, and applicable laws.
+          <span className="font-semibold text-slate-700 dark:text-white">Responsible Use:</span> Only download content when you have the right or permission to do so. Respect copyright, platform terms, and applicable laws.
         </div>
       </div>
 
@@ -35,13 +35,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenAdmin }) => {
                 Quick<span className="text-rose-500">Tok</span>
               </span>
             </div>
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            <p className="mt-1 text-xs text-slate-500 dark:text-[#b8bec9]">
               Fast & Simple TikTok Video Downloads
             </p>
           </div>
 
           {/* Links */}
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-slate-600 dark:text-slate-300">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-slate-600 dark:text-[#b8bec9]">
             <a href="#downloader" className="hover:text-rose-500">Downloader</a>
             <a href="#how-it-works" className="hover:text-rose-500">How It Works</a>
             <a href="#features" className="hover:text-rose-500">Features</a>

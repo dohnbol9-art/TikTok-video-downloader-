@@ -28,7 +28,7 @@ export const DownloadHistory: React.FC<DownloadHistoryProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs">
-      <div className="flex max-h-[85vh] w-full max-w-lg flex-col rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex max-h-[85vh] w-full max-w-lg flex-col rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-[#252a33] dark:bg-[#15181d]">
         
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-200 p-4 sm:p-5 dark:border-slate-800">
@@ -46,7 +46,7 @@ export const DownloadHistory: React.FC<DownloadHistoryProps> = ({
               <button
                 type="button"
                 onClick={onClearAll}
-                className="flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs font-medium text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-950/40"
+                className="flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs font-medium text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-950"
               >
                 <Trash2 className="h-3.5 w-3.5" />
                 <span>Clear All</span>
@@ -78,7 +78,7 @@ export const DownloadHistory: React.FC<DownloadHistoryProps> = ({
               {history.map((item) => (
                 <div
                   key={item.id}
-                  className="group relative flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50/70 p-3 transition-colors hover:border-slate-300 dark:border-slate-800 dark:bg-slate-950/60 dark:hover:border-slate-700"
+                  className="group relative flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50/70 p-3 transition-colors hover:border-slate-300 dark:border-[#252a33] dark:bg-[#0b0d10] dark:hover:border-slate-700"
                 >
                   {/* Thumbnail / Icon */}
                   <div className="relative h-14 w-11 shrink-0 overflow-hidden rounded-lg bg-slate-200 dark:bg-slate-800">
@@ -127,7 +127,7 @@ export const DownloadHistory: React.FC<DownloadHistoryProps> = ({
                       type="button"
                       onClick={() => onDeleteItem(item.id)}
                       title="Delete from history"
-                      className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-rose-100 hover:text-rose-600 dark:hover:bg-rose-950/60 dark:hover:text-rose-400"
+                      className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-rose-100 hover:text-rose-600 dark:hover:bg-rose-950 dark:hover:text-rose-400"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
@@ -139,7 +139,7 @@ export const DownloadHistory: React.FC<DownloadHistoryProps> = ({
         </div>
 
         {/* Footer info note */}
-        <div className="border-t border-slate-200 bg-slate-50 px-4 py-3 text-center text-[11px] text-slate-500 dark:border-slate-800 dark:bg-slate-950/80 dark:text-slate-400">
+        <div className="border-t border-slate-200 bg-slate-50 px-4 py-3 text-center text-[11px] text-slate-500 dark:border-[#252a33] dark:bg-[#0b0d10] dark:text-[#b8bec9]">
           History is stored locally in your browser storage and never uploaded to our servers.
         </div>
       </div>

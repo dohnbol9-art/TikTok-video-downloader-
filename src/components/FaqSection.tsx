@@ -61,7 +61,7 @@ export const FaqSection: React.FC = () => {
         <h2 className="mt-1 text-lg font-bold tracking-tight text-slate-900 sm:text-2xl dark:text-white">
           Frequently Asked Questions
         </h2>
-        <p className="mx-auto mt-1 max-w-xl text-[11px] text-slate-600 sm:text-xs dark:text-slate-400">
+        <p className="mx-auto mt-1 max-w-xl text-[11px] text-slate-600 sm:text-xs dark:text-[#b8bec9]">
           Everything you need to know about QuickTok and supported video processing.
         </p>
       </div>
@@ -74,7 +74,7 @@ export const FaqSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setOpenIndex(isOpen ? null : idx)}
-                className="flex w-full items-center justify-between p-5 text-left transition-colors hover:bg-slate-50 sm:p-6 dark:hover:bg-slate-800/50"
+                className="flex w-full items-center justify-between p-5 text-left transition-colors hover:bg-slate-50 sm:p-6 dark:hover:bg-[#101217]"
                 aria-expanded={isOpen}
               >
                 <span className="text-sm font-semibold text-slate-900 sm:text-base dark:text-white">
@@ -88,7 +88,7 @@ export const FaqSection: React.FC = () => {
               </button>
 
               {isOpen && (
-                <div className="px-5 pb-5 sm:px-6 sm:pb-6 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                <div className="px-5 pb-5 sm:px-6 sm:pb-6 text-sm leading-relaxed text-slate-600 dark:text-[#b8bec9]">
                   {faq.answer}
                 </div>
               )}

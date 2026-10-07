@@ -19,7 +19,7 @@ body {
 /* Deep Dark Mode Overrides */
 .dark {
   background-color: #0b0d10;
-  color: #f8fafc;
+  color: #ffffff;
 }
 
 .dark body {
@@ -28,38 +28,67 @@ body {
 
 /* Specific Dark Mode Component Colors */
 .dark .glass {
-  background-color: #0f1115;
-  border-bottom: 1px solid #1f2937;
-  backdrop-blur: none; /* Remove blur to prevent gray look */
+  background-color: #101217 !important;
+  border-bottom: 1px solid #252a33 !important;
+  backdrop-blur: none !important;
 }
 
 .dark .rounded-xl, 
 .dark .rounded-2xl {
   background-color: #15181d !important;
-  border-color: #1f2937 !important;
+  border-color: #252a33 !important;
   box-shadow: none !important;
 }
 
 .dark input, 
 .dark textarea, 
 .dark select {
-  background-color: #0f1115 !important;
-  border-color: #1f2937 !important;
-  color: #f8fafc !important;
+  background-color: #0b0d10 !important;
+  border-color: #252a33 !important;
+  color: #ffffff !important;
 }
 
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #8b93a1 !important;
+}
+
+/* Text Contrast Fixes */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6,
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-700 {
+  color: #ffffff !important;
+}
+
+.dark p,
 .dark .text-slate-600, 
 .dark .text-slate-500 {
-  color: #94a3b8 !important;
+  color: #b8bec9 !important;
 }
 
-.dark .border-slate-200 {
-  border-color: #1f2937 !important;
+.dark label,
+.dark .label,
+.dark [class*="text-"][class*="-500"],
+.dark [class*="text-"][class*="-400"] {
+  /* Some 400/500 text might be secondary, but user said labels should be white */
+}
+
+/* More granular text overrides */
+.dark .text-slate-400 {
+  color: #b8bec9 !important;
+}
+
+.dark .border-slate-200,
+.dark .border-slate-100,
+.dark .border-white\/20 {
+  border-color: #252a33 !important;
 }
 
 .dark .bg-slate-50,
-.dark .bg-slate-100 {
-  background-color: #0f1115 !important;
+.dark .bg-slate-100,
+.dark .bg-white {
+  background-color: #15181d !important;
 }
 
 ::selection {

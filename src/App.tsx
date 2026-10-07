@@ -73,7 +73,7 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0b0d10] dark:text-[#f8fafc] flex flex-col font-sans relative pb-16 sm:pb-20">
+      <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0b0d10] dark:text-white flex flex-col font-sans relative pb-16 sm:pb-20">
         
         {/* 1. Main website/header */}
         <Header

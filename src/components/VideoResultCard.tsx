@@ -384,7 +384,7 @@ export const VideoResultCard = forwardRef<VideoResultCardRef, VideoResultCardPro
                   className="h-5 w-5 rounded-full object-cover border border-rose-100 dark:border-slate-700"
                 />
               ) : (
-                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-100 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400">
+                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-400">
                   <User className="h-3 w-3" />
                 </div>
               )}
@@ -422,7 +422,7 @@ export const VideoResultCard = forwardRef<VideoResultCardRef, VideoResultCardPro
 
             {/* Real-time Percentage & Progress Animation Card */}
             {downloadState !== 'idle' && (
-              <div className="rounded-xl border border-rose-200 bg-rose-50/70 p-3.5 shadow-sm dark:border-rose-900/60 dark:bg-rose-950/40">
+              <div className="rounded-xl border border-rose-200 bg-rose-50 p-3.5 shadow-sm dark:border-rose-900 dark:bg-rose-950">
                 <div className="flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2">
                     {downloadState === 'completed' ? (
@@ -436,7 +436,7 @@ export const VideoResultCard = forwardRef<VideoResultCardRef, VideoResultCardPro
                   </div>
                   <div className="flex items-center gap-2">
                     {downloadSpeedText && (
-                      <span className="flex items-center gap-1 rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-bold text-rose-700 dark:bg-rose-900/60 dark:text-rose-300">
+                      <span className="flex items-center gap-1 rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-bold text-rose-700 dark:bg-rose-900 dark:text-rose-300">
                         <Zap className="h-3 w-3" />
                         {downloadSpeedText}
                       </span>
@@ -476,8 +476,8 @@ export const VideoResultCard = forwardRef<VideoResultCardRef, VideoResultCardPro
                       key={format.id}
                       className={`flex flex-col justify-between rounded-xl border p-3.5 transition-all ${
                         isHD
-                          ? 'border-rose-400 bg-rose-50/70 shadow-sm dark:border-rose-800/80 dark:bg-rose-950/30'
-                          : 'border-slate-200 bg-slate-50/70 dark:border-slate-800 dark:bg-slate-950/50'
+                          ? 'border-rose-400 bg-rose-50/70 shadow-sm dark:border-rose-800 dark:bg-rose-950'
+                          : 'border-slate-200 bg-slate-50/70 dark:border-[#252a33] dark:bg-[#0b0d10]'
                       }`}
                     >
                       <div className="flex items-center justify-between gap-2">
@@ -528,7 +528,7 @@ export const VideoResultCard = forwardRef<VideoResultCardRef, VideoResultCardPro
 
                 {/* Direct 1-Tap Save to Phone Gallery Button */}
                 {primaryVideoFormat && (
-                  <div className="sm:col-span-2 rounded-xl border border-rose-300 bg-gradient-to-r from-rose-500/10 via-rose-500/5 to-amber-500/10 p-3.5 dark:border-rose-900/60 dark:from-rose-950/40 dark:to-slate-900">
+                  <div className="sm:col-span-2 rounded-xl border border-rose-300 bg-gradient-to-r from-rose-500/10 via-rose-500/5 to-amber-500/10 p-3.5 dark:border-rose-900 dark:from-[#15181d] dark:to-[#0b0d10]">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                       <div className="flex items-center gap-2.5">
                         <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-rose-500 text-white">
@@ -582,7 +582,7 @@ export const VideoResultCard = forwardRef<VideoResultCardRef, VideoResultCardPro
                 )}
               </div>
             ) : (
-              <div className="rounded-xl border border-amber-200 bg-amber-50/70 p-3.5 text-xs text-amber-900 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-200">
+              <div className="rounded-xl border border-amber-200 bg-amber-50/70 p-3.5 text-xs text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200">
                 <div className="flex items-start gap-2">
                   <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" />
                   <div>
@@ -635,7 +635,7 @@ export const VideoResultCard = forwardRef<VideoResultCardRef, VideoResultCardPro
             )}
 
             {errorMessage && (
-              <div className="rounded-lg bg-rose-50 border border-rose-200 p-2.5 text-xs font-medium text-rose-700 dark:bg-rose-950/40 dark:border-rose-900 dark:text-rose-300">
+              <div className="rounded-lg bg-rose-50 border border-rose-200 p-2.5 text-xs font-medium text-rose-700 dark:bg-rose-950 dark:border-rose-900 dark:text-rose-300">
                 {errorMessage}
               </div>
             )}

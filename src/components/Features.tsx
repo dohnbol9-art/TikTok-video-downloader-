@@ -39,7 +39,7 @@ export const Features: React.FC = () => {
         <h2 className="mt-1 text-lg font-bold tracking-tight text-slate-900 sm:text-2xl dark:text-white">
           Why Choose QuickTok
         </h2>
-        <p className="mx-auto mt-1 max-w-xl text-[11px] text-slate-600 sm:text-xs dark:text-slate-400">
+        <p className="mx-auto mt-1 max-w-xl text-[11px] text-slate-600 sm:text-xs dark:text-[#b8bec9]">
           A modern downloader focused on performance, privacy, and genuine technical execution.
         </p>
       </div>
@@ -55,7 +55,7 @@ export const Features: React.FC = () => {
                 isMarquee ? 'sm:col-span-2 lg:col-span-2' : ''
               }`}
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-rose-500/10 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-rose-500/10 text-rose-600 dark:bg-rose-500 dark:text-white">
                 <Icon className="h-5 w-5" />
               </div>
 
@@ -63,7 +63,7 @@ export const Features: React.FC = () => {
                 {feature.title}
               </h3>
 
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+              <p className="mt-2 text-sm text-slate-600 dark:text-[#b8bec9]">
                 {feature.description}
               </p>
             </div>

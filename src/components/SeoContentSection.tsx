@@ -14,7 +14,7 @@ export const SeoContentSection: React.FC = () => {
           <h2 className="mt-1 text-lg font-extrabold tracking-tight text-slate-900 sm:text-2xl dark:text-white">
             Best TikTok Video Downloader Without Watermark
           </h2>
-          <p className="mt-2 text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p className="mt-2 text-[11px] text-slate-600 dark:text-[#b8bec9] leading-relaxed">
             <strong>QuickTok</strong> is a fast, reliable, and completely free online <strong>TikTok video downloader</strong> that enables you to save any public TikTok video in Full HD 1080p resolution without the TikTok watermark logo. Works seamlessly on iPhone, Android, PC, Mac, and tablets without requiring any software or app installation.
           </p>
         </div>
@@ -23,56 +23,56 @@ export const SeoContentSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           
           <div className="flex gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-rose-500/10 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-rose-500/10 text-rose-600 dark:bg-rose-500 dark:text-white">
               <Film className="h-6 w-6" />
             </div>
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                 Download TikTok Video Without Watermark
               </h3>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p className="mt-2 text-sm text-slate-600 dark:text-[#b8bec9] leading-relaxed">
                 Remove the bouncing TikTok watermark and creator username from your downloaded videos. Get clean, studio-grade MP4 files ready for offline viewing, archiving, or video editing.
               </p>
             </div>
           </div>
 
           <div className="flex gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-rose-500/10 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-rose-500/10 text-rose-600 dark:bg-rose-500 dark:text-white">
               <Zap className="h-6 w-6" />
             </div>
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                 Ultra-Fast 1080p Full HD Downloads
               </h3>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p className="mt-2 text-sm text-slate-600 dark:text-[#b8bec9] leading-relaxed">
                 Enjoy line-speed streaming without artificial throttle limits or download queues. QuickTok extracts original bitrates up to Full HD 1080p directly from source media servers.
               </p>
             </div>
           </div>
 
           <div className="flex gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-rose-500/10 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-rose-500/10 text-rose-600 dark:bg-rose-500 dark:text-white">
               <Music className="h-6 w-6" />
             </div>
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                 TikTok to MP3 Audio Converter
               </h3>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p className="mt-2 text-sm text-slate-600 dark:text-[#b8bec9] leading-relaxed">
                 Love a viral song or sound? QuickTok isolates and converts the original background audio track so you can save high-bitrate MP3 music files directly to your device with one tap.
               </p>
             </div>
           </div>
 
           <div className="flex gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-rose-500/10 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-rose-500/10 text-rose-600 dark:bg-rose-500 dark:text-white">
               <ShieldCheck className="h-6 w-6" />
             </div>
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                 100% Free & Unlimited Usage
               </h3>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p className="mt-2 text-sm text-slate-600 dark:text-[#b8bec9] leading-relaxed">
                 No credit cards, no login, and no subscriptions required. QuickTok is completely free with no daily download caps, intrusive software requirements, or account restrictions.
               </p>
             </div>
@@ -122,11 +122,11 @@ export const SeoContentSection: React.FC = () => {
         </div>
 
         {/* Benefits Checklist */}
-        <div className="mt-10 rounded-2xl bg-rose-50/70 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/30 p-6">
+        <div className="mt-10 rounded-2xl bg-rose-50/70 dark:bg-rose-950 border border-rose-100 dark:border-rose-900 p-6">
           <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3">
             Why Creators Choose QuickTok Video Downloader:
           </h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-700 dark:text-slate-300">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-700 dark:text-[#b8bec9]">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-rose-500 shrink-0" />
               <span>No watermark on Full HD 1080p MP4 videos</span>

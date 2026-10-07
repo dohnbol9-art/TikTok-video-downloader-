@@ -12,10 +12,10 @@ export const AboutSection: React.FC = () => {
           <h2 className="mt-2 text-xl font-bold tracking-tight text-slate-900 sm:text-3xl dark:text-white">
             Built for Modern Web Standards
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+          <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-[#b8bec9]">
             QuickTok was developed to address common frustrations with traditional video download tools: excessive ads, deceptive download links, malware risks, and sluggish conversion servers.
           </p>
-          <p className="mt-2 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+          <p className="mt-2 text-base leading-relaxed text-slate-600 dark:text-[#b8bec9]">
             Our platform utilizes a direct-streaming pipeline built on Node.js and TypeScript. We never store copies of your processed videos, and we enforce strict origin checks and SSRF boundaries to ensure safe, reliable media delivery.
           </p>
 
@@ -24,7 +24,7 @@ export const AboutSection: React.FC = () => {
               <CheckCircle className="mt-1 h-5 w-5 shrink-0 text-rose-500" />
               <div>
                 <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Zero Permanent Storage</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Media is piped directly through memory streams and immediately flushed.</p>
+                <p className="text-xs text-slate-500 dark:text-[#b8bec9]">Media is piped directly through memory streams and immediately flushed.</p>
               </div>
             </div>
 
@@ -32,7 +32,7 @@ export const AboutSection: React.FC = () => {
               <Shield className="mt-1 h-5 w-5 shrink-0 text-rose-500" />
               <div>
                 <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Strict Legal Compliance</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Respects platform DRM, private content protections, and copyright restrictions.</p>
+                <p className="text-xs text-slate-500 dark:text-[#b8bec9]">Respects platform DRM, private content protections, and copyright restrictions.</p>
               </div>
             </div>
 
@@ -40,7 +40,7 @@ export const AboutSection: React.FC = () => {
               <Cpu className="mt-1 h-5 w-5 shrink-0 text-rose-500" />
               <div>
                 <h3 className="text-sm font-semibold text-slate-900 dark:text-white">High-Throughput Node Core</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Engineered with HTTP keep-alive and backpressure-aware stream management.</p>
+                <p className="text-xs text-slate-500 dark:text-[#b8bec9]">Engineered with HTTP keep-alive and backpressure-aware stream management.</p>
               </div>
             </div>
 
@@ -48,7 +48,7 @@ export const AboutSection: React.FC = () => {
               <Lock className="mt-1 h-5 w-5 shrink-0 text-rose-500" />
               <div>
                 <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Local-Only History</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Your download log is saved in browser localStorage only, accessible only to you.</p>
+                <p className="text-xs text-slate-500 dark:text-[#b8bec9]">Your download log is saved in browser localStorage only, accessible only to you.</p>
               </div>
             </div>
           </div>
