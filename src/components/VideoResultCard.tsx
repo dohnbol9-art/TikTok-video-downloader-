@@ -44,24 +44,57 @@ export const VideoResultCard: React.FC<VideoResultCardProps> = ({
     return `${getApiEndpoint('/api/video/proxy-image')}?url=${encodeURIComponent(url)}`;
   };
 
-  // In-session or direct stream fetcher with fallback for static hosts
+  // Helper to trigger direct browser download from high-speed media CDN
+  const triggerDirectDownload = (mediaUrl: string, filename: string) => {
+    const link = document.createElement('a');
+    link.href = mediaUrl;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // In-session or direct stream fetcher with strict media MIME validation
   const fetchStreamResponse = async (streamEndpoint: string, directUrl?: string) => {
-    try {
-      const res = await fetch(streamEndpoint);
-      if (res.ok) return res;
-    } catch {
-      // Server stream endpoint failed, try direct URL
+    // 1. Try server stream endpoint
+    if (streamEndpoint && !streamEndpoint.startsWith('data:')) {
+      try {
+        const res = await fetch(streamEndpoint);
+        const contentType = (res.headers.get('content-type') || '').toLowerCase();
+        // Guard: Discard HTML responses (e.g. Vercel SPA rewrite fallback)
+        if (
+          res.ok &&
+          !contentType.includes('text/html') &&
+          !contentType.includes('application/json') &&
+          (contentType.includes('video') || contentType.includes('audio') || contentType.includes('octet-stream'))
+        ) {
+          return res;
+        }
+      } catch {
+        // Server stream endpoint failed
+      }
     }
 
+    // 2. Try direct CDN URL
     if (directUrl) {
       try {
         const directRes = await fetch(directUrl);
-        if (directRes.ok) return directRes;
+        const contentType = (directRes.headers.get('content-type') || '').toLowerCase();
+        if (
+          directRes.ok &&
+          !contentType.includes('text/html') &&
+          !contentType.includes('application/json')
+        ) {
+          return directRes;
+        }
       } catch {
-        // Fallback failed
+        // Direct fetch blocked by CORS
       }
     }
-    throw new Error('Failed to retrieve media stream.');
+
+    throw new Error('DIRECT_FALLBACK_REQUIRED');
   };
 
   // Real-time chunked stream downloader with accurate byte tracking and percentage animation
@@ -79,18 +112,32 @@ export const VideoResultCard: React.FC<VideoResultCardProps> = ({
     setDownloadStatusText('Connecting to high-speed media server...');
     setErrorMessage(null);
 
+    const safeFilename = `quicktok_${(metadata.author.username || 'video').replace(/[^a-zA-Z0-9_-]/g, '_')}_${metadata.id || Date.now()}.${extension}`;
+
     try {
       setDownloadState('processing');
       setDownloadStatusText('Handshaking stream...');
 
-      const safeFilename = `quicktok_${(metadata.author.username || 'video').replace(/[^a-zA-Z0-9_-]/g, '_')}_${metadata.id || Date.now()}.${extension}`;
       const streamEndpoint = `${getApiEndpoint('/api/video/download')}?url=${encodeURIComponent(downloadUrl || '')}&id=${metadata.id}&format=${extension}&filename=${encodeURIComponent(safeFilename)}`;
 
       setDownloadState('downloading');
       setDownloadStatusText('Streaming high quality media...');
 
-      // Fetch with universal fallback for static hosting
-      const res = await fetchStreamResponse(streamEndpoint, downloadUrl);
+      let res: Response;
+      try {
+        res = await fetchStreamResponse(streamEndpoint, downloadUrl);
+      } catch {
+        // If in-browser fetch is blocked (CORS / static rewrite), trigger direct browser download of the full video file!
+        if (downloadUrl) {
+          triggerDirectDownload(downloadUrl, safeFilename);
+          setDownloadPercent(100);
+          setDownloadStatusText('100% Complete · Full HD Video downloading from CDN!');
+          setDownloadState('completed');
+          onDownloadComplete(extension.toUpperCase());
+          return;
+        }
+        throw new Error('Unable to retrieve media stream.');
+      }
 
       const contentLengthHeader = res.headers.get('content-length');
       const totalBytes = contentLengthHeader ? parseInt(contentLengthHeader, 10) : 0;
@@ -126,20 +173,24 @@ export const VideoResultCard: React.FC<VideoResultCardProps> = ({
         }
       }
 
+      // Critical Guard: Genuine video streams are never under 30 KB!
+      // If receivedBytes is under 30 KB, this was an HTML error page (e.g. 4.7 KB index.html).
+      // Discard and trigger direct full-size media download!
+      if (receivedBytes < 30000 && downloadUrl) {
+        triggerDirectDownload(downloadUrl, safeFilename);
+        setDownloadPercent(100);
+        setDownloadStatusText('100% Complete · Full HD Video downloading from CDN!');
+        setDownloadState('completed');
+        onDownloadComplete(extension.toUpperCase());
+        return;
+      }
+
       setDownloadPercent(100);
       setDownloadStatusText('Finalizing video file...');
 
       // Enforce true binary media MIME type
       const mime = extension === 'mp3' ? 'audio/mpeg' : 'video/mp4';
       const cleanBlob = new Blob(chunks as BlobPart[], { type: mime });
-
-      // Guard: Ensure response is NOT an HTML error or auth redirect
-      if (cleanBlob.type.includes('text/html') || cleanBlob.type.includes('application/json')) {
-        const text = await cleanBlob.text();
-        if (text.includes('<!DOCTYPE') || text.includes('<html')) {
-          throw new Error('Session gateway error. Please use direct media stream link.');
-        }
-      }
 
       // Create local object URL for instant file download
       const objectUrl = window.URL.createObjectURL(cleanBlob);
@@ -192,8 +243,17 @@ export const VideoResultCard: React.FC<VideoResultCardProps> = ({
       const safeFilename = `quicktok_${(metadata.author.username || 'video').replace(/[^a-zA-Z0-9_-]/g, '_')}_${metadata.id || Date.now()}.mp4`;
       const streamEndpoint = `${getApiEndpoint('/api/video/download')}?url=${encodeURIComponent(downloadUrl)}&id=${metadata.id}&format=mp4&filename=${encodeURIComponent(safeFilename)}`;
 
-      // Fetch binary video data with chunk tracking
-      const res = await fetchStreamResponse(streamEndpoint, downloadUrl);
+      let res: Response;
+      try {
+        res = await fetchStreamResponse(streamEndpoint, downloadUrl);
+      } catch {
+        triggerDirectDownload(downloadUrl, safeFilename);
+        setDownloadPercent(100);
+        setDownloadStatusText('100% Complete · Saved to device!');
+        setShowPhoneGuide(true);
+        onDownloadComplete('MP4 (Phone Gallery)');
+        return;
+      }
 
       const contentLengthHeader = res.headers.get('content-length');
       const totalBytes = contentLengthHeader ? parseInt(contentLengthHeader, 10) : 0;
@@ -215,6 +275,15 @@ export const VideoResultCard: React.FC<VideoResultCardProps> = ({
             }
           }
         }
+      }
+
+      if (receivedBytes < 30000 && downloadUrl) {
+        triggerDirectDownload(downloadUrl, safeFilename);
+        setDownloadPercent(100);
+        setDownloadStatusText('100% Complete · Saved to device!');
+        setShowPhoneGuide(true);
+        onDownloadComplete('MP4 (Phone Gallery)');
+        return;
       }
 
       setDownloadPercent(100);

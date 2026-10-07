@@ -73,6 +73,8 @@ export const Banner320x50Ad: React.FC<Banner320x50AdProps> = ({
             backgroundColor: 'transparent',
           }}
           scrolling="no"
+          sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
+          referrerPolicy="no-referrer-when-downgrade"
           srcDoc={adHtml}
         />
       </div>
