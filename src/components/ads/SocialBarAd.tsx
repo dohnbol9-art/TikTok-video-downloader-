@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { X } from 'lucide-react';
 
 export interface SocialBarAdProps {
@@ -11,33 +11,6 @@ export const SocialBarAd: React.FC<SocialBarAdProps> = ({
   showLabel = true,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scriptInjectedRef = useRef<boolean>(false);
-
-  useEffect(() => {
-    // Only inject script once on live mount
-    if (scriptInjectedRef.current) return;
-    scriptInjectedRef.current = true;
-
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://pl31677023.profitableratecpmnetwork.com/1a/d9/37/1ad937a44dc7fa027afb4a54db233621.js';
-    script.async = true;
-
-    if (containerRef.current) {
-      containerRef.current.appendChild(script);
-    } else {
-      document.body.appendChild(script);
-    }
-
-    return () => {
-      // Cleanup on unmount
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-      scriptInjectedRef.current = false;
-    };
-  }, []);
 
   if (!isVisible) return null;
 
@@ -65,11 +38,8 @@ export const SocialBarAd: React.FC<SocialBarAdProps> = ({
           </button>
         </div>
 
-        {/* Script mounting container */}
-        <div
-          ref={containerRef}
-          className="flex items-center justify-center min-h-[1px] min-w-[1px] max-w-full overflow-hidden"
-        />
+        {/* Script placeholder container */}
+        <div className="flex items-center justify-center min-h-[1px] min-w-[1px] max-w-full overflow-hidden" />
       </div>
     </aside>
   );

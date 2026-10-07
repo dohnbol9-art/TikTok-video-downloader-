@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { videoService } from '../services/video.service';
-import { downloadService } from '../services/download.service';
-import { ProviderFactory } from '../providers/provider.factory';
-import { logger } from '../utils/logger';
+import { videoService } from '../services/video.service.ts';
+import { downloadService } from '../services/download.service.ts';
+import { ProviderFactory } from '../providers/provider.factory.ts';
+import { logger } from '../utils/logger.ts';
 
 export class VideoController {
   public async process(req: Request, res: Response): Promise<void> {

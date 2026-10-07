@@ -1,5 +1,5 @@
-import { logger } from '../utils/logger';
-import { TikTokProvider, VideoMetadata, VideoFormatOption, DownloadSession } from './tiktok.provider.interface';
+import { logger } from '../utils/logger.ts';
+import { TikTokProvider, VideoMetadata, VideoFormatOption, DownloadSession } from './tiktok.provider.interface.ts';
 
 export class OEmbedTikTokProvider implements TikTokProvider {
   public name = 'OEmbedTikTokProvider';

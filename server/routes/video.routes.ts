@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { videoController } from '../controllers/video.controller';
-import { standardRateLimiter, downloadRateLimiter } from '../middleware/rateLimiter';
-import { validateProcessRequest } from '../middleware/validation';
+import { videoController } from '../controllers/video.controller.ts';
+import { standardRateLimiter, downloadRateLimiter } from '../middleware/rateLimiter.ts';
+import { validateProcessRequest } from '../middleware/validation.ts';
 
 export const videoRouter = Router();
 

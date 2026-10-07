@@ -1,11 +1,14 @@
 import express from 'express';
-import { securityHeaders, corsMiddleware } from './middleware/security';
-import { errorHandler } from './middleware/errorHandler';
-import { videoRouter } from './routes/video.routes';
-import { adminRouter } from './routes/admin.routes';
-import { healthRouter } from './routes/health.routes';
+import { securityHeaders, corsMiddleware } from './middleware/security.ts';
+import { errorHandler } from './middleware/errorHandler.ts';
+import { videoRouter } from './routes/video.routes.ts';
+import { adminRouter } from './routes/admin.routes.ts';
+import { healthRouter } from './routes/health.routes.ts';
 
 export const app = express();
+
+// Trust proxy for custom domain reverse proxies (Cloudflare, Cloud Run, Nginx)
+app.set('trust proxy', 1);
 
 // Disable x-powered-by
 app.disable('x-powered-by');

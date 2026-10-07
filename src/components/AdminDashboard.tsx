@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ServerMetrics } from '../types';
 import { X, Shield, RefreshCw, Activity, CheckCircle, AlertOctagon, Clock, Cpu, Trash2, Key } from 'lucide-react';
+import { getApiEndpoint } from '../config';
 
 interface AdminDashboardProps {
   isOpen: boolean;
@@ -28,7 +29,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ isOpen, onClose 
         headers['x-admin-token'] = activeToken;
       }
 
-      const res = await fetch('/api/admin/stats', { headers });
+      const res = await fetch(getApiEndpoint('/api/admin/stats'), { headers });
       const data = await res.json();
 
       if (!res.ok || !data.success) {
@@ -68,7 +69,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ isOpen, onClose 
     if (!confirm('Are you sure you want to reset all request counters?')) return;
 
     try {
-      const res = await fetch('/api/admin/reset', {
+      const res = await fetch(getApiEndpoint('/api/admin/reset'), {
         method: 'POST',
         headers: {
           'x-admin-token': token,

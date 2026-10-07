@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { metricsService } from '../services/metrics.service';
-import { config } from '../config/env';
+import { metricsService } from '../services/metrics.service.ts';
+import { config } from '../config/env.ts';
 
 export class AdminController {
   public async getStats(req: Request, res: Response): Promise<void> {

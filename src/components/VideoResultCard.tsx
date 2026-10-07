@@ -16,6 +16,7 @@ import {
   ExternalLink,
   Zap,
 } from 'lucide-react';
+import { getApiEndpoint } from '../config';
 
 interface VideoResultCardProps {
   metadata: VideoMetadata;
@@ -40,7 +41,27 @@ export const VideoResultCard: React.FC<VideoResultCardProps> = ({
   const getProxyUrl = (url?: string) => {
     if (!url) return '';
     if (url.startsWith('/') || url.startsWith('blob:')) return url;
-    return `/api/video/proxy-image?url=${encodeURIComponent(url)}`;
+    return `${getApiEndpoint('/api/video/proxy-image')}?url=${encodeURIComponent(url)}`;
+  };
+
+  // In-session or direct stream fetcher with fallback for static hosts
+  const fetchStreamResponse = async (streamEndpoint: string, directUrl?: string) => {
+    try {
+      const res = await fetch(streamEndpoint);
+      if (res.ok) return res;
+    } catch {
+      // Server stream endpoint failed, try direct URL
+    }
+
+    if (directUrl) {
+      try {
+        const directRes = await fetch(directUrl);
+        if (directRes.ok) return directRes;
+      } catch {
+        // Fallback failed
+      }
+    }
+    throw new Error('Failed to retrieve media stream.');
   };
 
   // Real-time chunked stream downloader with accurate byte tracking and percentage animation
@@ -63,16 +84,13 @@ export const VideoResultCard: React.FC<VideoResultCardProps> = ({
       setDownloadStatusText('Handshaking stream...');
 
       const safeFilename = `quicktok_${(metadata.author.username || 'video').replace(/[^a-zA-Z0-9_-]/g, '_')}_${metadata.id || Date.now()}.${extension}`;
-      const streamEndpoint = `/api/video/download?url=${encodeURIComponent(downloadUrl || '')}&id=${metadata.id}&format=${extension}&filename=${encodeURIComponent(safeFilename)}`;
+      const streamEndpoint = `${getApiEndpoint('/api/video/download')}?url=${encodeURIComponent(downloadUrl || '')}&id=${metadata.id}&format=${extension}&filename=${encodeURIComponent(safeFilename)}`;
 
       setDownloadState('downloading');
       setDownloadStatusText('Streaming high quality media...');
 
-      // Fetch within authenticated web session
-      const res = await fetch(streamEndpoint);
-      if (!res.ok) {
-        throw new Error('Failed to retrieve media stream from server.');
-      }
+      // Fetch with universal fallback for static hosting
+      const res = await fetchStreamResponse(streamEndpoint, downloadUrl);
 
       const contentLengthHeader = res.headers.get('content-length');
       const totalBytes = contentLengthHeader ? parseInt(contentLengthHeader, 10) : 0;
@@ -172,11 +190,10 @@ export const VideoResultCard: React.FC<VideoResultCardProps> = ({
 
     try {
       const safeFilename = `quicktok_${(metadata.author.username || 'video').replace(/[^a-zA-Z0-9_-]/g, '_')}_${metadata.id || Date.now()}.mp4`;
-      const streamEndpoint = `/api/video/download?url=${encodeURIComponent(downloadUrl)}&id=${metadata.id}&format=mp4&filename=${encodeURIComponent(safeFilename)}`;
+      const streamEndpoint = `${getApiEndpoint('/api/video/download')}?url=${encodeURIComponent(downloadUrl)}&id=${metadata.id}&format=mp4&filename=${encodeURIComponent(safeFilename)}`;
 
       // Fetch binary video data with chunk tracking
-      const res = await fetch(streamEndpoint);
-      if (!res.ok) throw new Error('Failed to retrieve video stream.');
+      const res = await fetchStreamResponse(streamEndpoint, downloadUrl);
 
       const contentLengthHeader = res.headers.get('content-length');
       const totalBytes = contentLengthHeader ? parseInt(contentLengthHeader, 10) : 0;

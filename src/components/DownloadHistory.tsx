@@ -1,6 +1,7 @@
 import React from 'react';
 import { HistoryItem } from '../types';
 import { X, Trash2, ExternalLink, Video, Clock } from 'lucide-react';
+import { getApiEndpoint } from '../config';
 
 interface DownloadHistoryProps {
   isOpen: boolean;
@@ -22,7 +23,7 @@ export const DownloadHistory: React.FC<DownloadHistoryProps> = ({
   const getProxyUrl = (url?: string) => {
     if (!url) return '';
     if (url.startsWith('/') || url.startsWith('blob:')) return url;
-    return `/api/video/proxy-image?url=${encodeURIComponent(url)}`;
+    return `${getApiEndpoint('/api/video/proxy-image')}?url=${encodeURIComponent(url)}`;
   };
 
   return (

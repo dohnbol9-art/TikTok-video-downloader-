@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { config } from '../config/env.ts';
 
 export function securityHeaders(req: Request, res: Response, next: NextFunction): void {
   // Prevent MIME type sniffing
@@ -19,8 +20,34 @@ export function securityHeaders(req: Request, res: Response, next: NextFunction)
 }
 
 export function corsMiddleware(req: Request, res: Response, next: NextFunction): void {
-  const origin = req.headers.origin || '*';
-  res.setHeader('Access-Control-Allow-Origin', origin);
+  const origin = req.headers.origin;
+  const allowedOrigins = [
+    'https://quicktok.online',
+    'https://www.quicktok.online',
+    'http://localhost:3000',
+    'http://localhost:5173',
+  ];
+
+  if (config.frontendUrl) {
+    allowedOrigins.push(config.frontendUrl.replace(/\/+$/, ''));
+  }
+
+  if (origin) {
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.endsWith('.vercel.app') ||
+      origin.endsWith('.netlify.app') ||
+      origin.endsWith('.github.io') ||
+      origin.endsWith('.run.app')
+    ) {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+    } else {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  }
+
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, X-Admin-Token');
   res.setHeader('Access-Control-Max-Age', '86400');

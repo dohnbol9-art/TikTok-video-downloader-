@@ -1,8 +1,8 @@
-import { validateTikTokUrl } from '../validation/url.validator';
-import { ProviderFactory } from '../providers/provider.factory';
-import { metricsService } from './metrics.service';
-import { logger } from '../utils/logger';
-import { VideoMetadata } from '../providers/tiktok.provider.interface';
+import { validateTikTokUrl } from '../validation/url.validator.ts';
+import { ProviderFactory } from '../providers/provider.factory.ts';
+import { metricsService } from './metrics.service.ts';
+import { logger } from '../utils/logger.ts';
+import { VideoMetadata } from '../providers/tiktok.provider.interface.ts';
 
 export interface ProcessVideoResult {
   success: boolean;

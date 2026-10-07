@@ -25,6 +25,7 @@ function expressApiPlugin(): Plugin {
 
 export default defineConfig(({ command }) => {
   return {
+    base: '/',
     plugins: [
       react(),
       tailwindcss(),
@@ -39,6 +40,15 @@ export default defineConfig(({ command }) => {
       chunkSizeWarningLimit: 800,
       rollupOptions: {
         output: {
+          entryFileNames: 'assets/index.js',
+          chunkFileNames: 'assets/[name]-[hash].js',
+          assetFileNames: (assetInfo) => {
+            const name = assetInfo.name || '';
+            if (name.endsWith('.css')) {
+              return 'assets/index.css';
+            }
+            return 'assets/[name]-[hash][extname]';
+          },
           manualChunks(id) {
             if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
               return 'vendor-react';

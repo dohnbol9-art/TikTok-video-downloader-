@@ -1,7 +1,7 @@
-import { config } from '../config/env';
-import { TikTokProvider } from './tiktok.provider.interface';
-import { ConfiguredApiProvider } from './configured.provider';
-import { OEmbedTikTokProvider } from './oembed.provider';
+import { config } from '../config/env.ts';
+import { TikTokProvider } from './tiktok.provider.interface.ts';
+import { ConfiguredApiProvider } from './configured.provider.ts';
+import { OEmbedTikTokProvider } from './oembed.provider.ts';
 
 export class ProviderFactory {
   private static configuredProvider = new ConfiguredApiProvider();

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { metricsService } from '../services/metrics.service';
-import { config } from '../config/env';
+import { metricsService } from '../services/metrics.service.ts';
+import { config } from '../config/env.ts';
 
 interface RequestBucket {
   count: number;

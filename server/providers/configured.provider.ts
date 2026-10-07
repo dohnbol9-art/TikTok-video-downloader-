@@ -1,6 +1,6 @@
-import { config } from '../config/env';
-import { logger } from '../utils/logger';
-import { TikTokProvider, VideoMetadata, VideoFormatOption, DownloadSession } from './tiktok.provider.interface';
+import { config } from '../config/env.ts';
+import { logger } from '../utils/logger.ts';
+import { TikTokProvider, VideoMetadata, VideoFormatOption, DownloadSession } from './tiktok.provider.interface.ts';
 
 export class ConfiguredApiProvider implements TikTokProvider {
   public name = 'ConfiguredApiProvider';

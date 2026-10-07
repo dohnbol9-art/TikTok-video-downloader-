@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Clipboard, X, ArrowRight, Loader2, AlertCircle, Info, CheckCircle2, List, Play, Check, Sparkles } from 'lucide-react';
+import { Clipboard, X, ArrowRight, Loader2, AlertCircle, List, Sparkles } from 'lucide-react';
 import { ProcessingStatus, VideoMetadata } from '../types';
 import { validateClientTikTokUrl } from '../utils/url';
 import { VideoResultCard } from './VideoResultCard';
+import { getApiEndpoint } from '../config';
 
 interface DownloaderProps {
   onSuccessDownload: (item: {
@@ -20,6 +21,97 @@ interface BatchItem {
   status: ProcessingStatus;
   metadata: VideoMetadata | null;
   error?: string;
+}
+
+// Universal fetcher: Tries configured server endpoint first; falls back to direct client parser on static hosts
+async function fetchTikTokVideoMetadata(targetUrl: string): Promise<{ success: boolean; data?: VideoMetadata; error?: string }> {
+  // 1. Try server endpoint
+  try {
+    const response = await fetch(getApiEndpoint('/api/video/process'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        url: targetUrl,
+        preview: true,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data.success && data.data) {
+        return { success: true, data: data.data };
+      }
+    }
+  } catch {
+    // Server endpoint not reachable (static host), proceed to client fallback
+  }
+
+  // 2. Client-side fallback for static hosting
+  try {
+    const directRes = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(targetUrl)}&hd=1`);
+    if (directRes.ok) {
+      const json = await directRes.json();
+      if (json.code === 0 && json.data) {
+        const d = json.data;
+        const formats = [];
+        if (d.hdplay || d.play) {
+          formats.push({
+            id: 'mp4_hd',
+            format: 'MP4',
+            quality: '1080p HD (No Watermark)',
+            type: 'video' as const,
+            downloadUrl: d.hdplay || d.play,
+            fileSize: d.size ? `${(d.size / 1024 / 1024).toFixed(1)} MB` : undefined,
+            isDirectDownloadAvailable: true,
+          });
+          formats.push({
+            id: 'mp4_sd',
+            format: 'MP4',
+            quality: 'Standard Quality (Fast)',
+            type: 'video' as const,
+            downloadUrl: d.play,
+            fileSize: d.size ? `${(d.size / 1024 / 1024).toFixed(1)} MB` : undefined,
+            isDirectDownloadAvailable: true,
+          });
+        }
+        if (d.music) {
+          formats.push({
+            id: 'mp3',
+            format: 'MP3',
+            quality: 'Original Audio (HQ)',
+            type: 'audio' as const,
+            downloadUrl: d.music,
+            isDirectDownloadAvailable: true,
+          });
+        }
+
+        const metadata: VideoMetadata = {
+          id: d.id || `${Date.now()}`,
+          url: targetUrl,
+          title: d.title || 'TikTok Video',
+          author: {
+            username: d.author?.unique_id || 'user',
+            nickname: d.author?.nickname || d.author?.unique_id || 'TikTok Creator',
+            avatarUrl: d.author?.avatar,
+          },
+          thumbnailUrl: d.cover || d.origin_cover,
+          durationFormatted: d.duration ? `${Math.floor(d.duration / 60)}:${(d.duration % 60).toString().padStart(2, '0')}` : undefined,
+          formats,
+          isDownloadReady: true,
+          providerType: 'configured',
+        };
+
+        return { success: true, data: metadata };
+      }
+    }
+  } catch {
+    // Both failed
+  }
+
+  return { success: false, error: 'Service temporarily unavailable. Please try again.' };
 }
 
 export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => {
@@ -106,40 +198,21 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
 
     setStatus('PROCESSING');
 
-    try {
-      const response = await fetch('/api/video/process', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          url: clientValidation.cleanUrl,
-          preview: true,
-        }),
-      });
+    const result = await fetchTikTokVideoMetadata(clientValidation.cleanUrl);
 
-      const data = await response.json();
-
-      if (!response.ok || !data.success) {
-        const errorCode = data.error?.code || 'SERVER_ERROR';
-        const msg = data.error?.message || 'Something went wrong.';
-        setStatus(errorCode as ProcessingStatus);
-        setErrorMessage(msg);
-        return;
-      }
-
-      setMetadata(data.data);
-      setStatus('SUCCESS');
-      
-      setTimeout(() => {
-        const resultEl = document.getElementById('video-download-result');
-        if (resultEl) resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 100);
-    } catch {
+    if (!result.success || !result.data) {
       setStatus('ERROR');
-      setErrorMessage('Unable to connect to server.');
+      setErrorMessage(result.error || 'Unable to retrieve media stream. Please verify the URL and try again.');
+      return;
     }
+
+    setMetadata(result.data);
+    setStatus('SUCCESS');
+    
+    setTimeout(() => {
+      const resultEl = document.getElementById('video-download-result');
+      if (resultEl) resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
   };
 
   const handleStartBatch = async () => {
@@ -166,25 +239,15 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
         continue;
       }
 
-      try {
-        const response = await fetch('/api/video/process', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url: validation.cleanUrl, preview: true }),
-        });
-        const data = await response.json();
-
-        if (response.ok && data.success) {
-          setBatchItems(prev => prev.map(it => it.id === item.id ? { ...it, status: 'SUCCESS', metadata: data.data } : it));
-        } else {
-          setBatchItems(prev => prev.map(it => it.id === item.id ? { ...it, status: 'ERROR', error: data.error?.message || 'Failed' } : it));
-        }
-      } catch {
-        setBatchItems(prev => prev.map(it => it.id === item.id ? { ...it, status: 'ERROR', error: 'Connection error' } : it));
+      const result = await fetchTikTokVideoMetadata(validation.cleanUrl);
+      if (result.success && result.data) {
+        setBatchItems(prev => prev.map(it => it.id === item.id ? { ...it, status: 'SUCCESS', metadata: result.data! } : it));
+      } else {
+        setBatchItems(prev => prev.map(it => it.id === item.id ? { ...it, status: 'ERROR', error: result.error || 'Failed' } : it));
       }
       
-      // Small delay between requests to avoid rate limits
-      await new Promise(r => setTimeout(r, 500));
+      // Small delay between requests
+      await new Promise(r => setTimeout(r, 400));
     }
     setIsBatchProcessing(false);
   };

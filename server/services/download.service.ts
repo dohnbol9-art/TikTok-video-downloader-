@@ -1,6 +1,6 @@
 import { Response } from 'express';
-import { isSafeUrl } from '../utils/ssrf';
-import { logger } from '../utils/logger';
+import { isSafeUrl } from '../utils/ssrf.ts';
+import { logger } from '../utils/logger.ts';
 import { Readable } from 'stream';
 
 export interface StreamDownloadOptions {

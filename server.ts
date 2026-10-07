@@ -1,10 +1,10 @@
 import path from 'path';
 import express from 'express';
-import { app } from './server/app';
-import { config } from './server/config/env';
-import { logger } from './server/utils/logger';
+import { app } from './server/app.ts';
+import { config } from './server/config/env.ts';
+import { logger } from './server/utils/logger.ts';
 
-const PORT = config.port || 3000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : config.port || 3000;
 const distPath = path.resolve(process.cwd(), 'dist');
 
 // Serve static frontend files in production

@@ -80,12 +80,22 @@
       ]
     }
     </script>
+    <!-- Compiled CSS fallback for static branch deployments -->
+    <link rel="stylesheet" crossorigin href="/assets/index.css" />
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased selection:bg-rose-500/20 selection:text-rose-600 dark:bg-slate-950 dark:text-slate-100">
     <div id="root"></div>
     <!-- Adsterra Social Bar -->
-    <script src="https://pl31677023.profitableratecpmnetwork.com/1a/d9/37/1ad937a44dc7fa027afb4a54db233621.js"></script>
+    <script async src="https://pl31677023.profitableratecpmnetwork.com/1a/d9/37/1ad937a44dc7fa027afb4a54db233621.js"></script>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      // Fallback for static GitHub Pages root deployments (Deploy from branch)
+      setTimeout(function() {
+        if (!window.__QUICKTOK_MOUNTED__) {
+          import('/assets/index.js');
+        }
+      }, 150);
+    </script>
   </body>
 </html>
 
