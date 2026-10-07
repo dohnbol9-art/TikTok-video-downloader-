@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import heroImage from '../assets/images/hero_media_flow_1791143950568.jpg';
 
 export const Hero: React.FC = () => {
@@ -6,27 +7,54 @@ export const Hero: React.FC = () => {
     <div className="relative overflow-hidden pt-10 pb-6 sm:pt-14 sm:pb-8">
       {/* Subtle atmospheric glow behind hero */}
       <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-40 dark:opacity-25">
-        <div className="h-72 w-96 rounded-full bg-gradient-to-tr from-rose-500/30 to-amber-500/20 blur-3xl" />
+        <motion.div 
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="h-72 w-96 rounded-full bg-gradient-to-tr from-rose-500/30 to-amber-500/20 blur-3xl" 
+        />
       </div>
 
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
         {/* Editorial kicker */}
-        <div className="mb-3 text-xs font-semibold tracking-wider text-rose-500 uppercase dark:text-rose-400">
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          className="mb-3 text-xs font-semibold tracking-wider text-rose-500 uppercase dark:text-rose-400"
+        >
           Online Video Downloader & Converter
-        </div>
+        </motion.div>
 
         {/* Primary Headline with target keywords */}
-        <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl dark:text-white" style={{ textWrap: 'balance' }}>
+        <motion.h1 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl dark:text-white" 
+          style={{ textWrap: 'balance' }}
+        >
           TikTok Video Downloader Without Watermark
-        </h1>
+        </motion.h1>
 
         {/* Subtitle with high-conversion keywords */}
-        <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 sm:text-lg dark:text-slate-300" style={{ textWrap: 'balance' }}>
+        <motion.p 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="mx-auto mt-3 max-w-2xl text-xs text-slate-600 sm:text-base lg:text-lg dark:text-slate-300" 
+          style={{ textWrap: 'balance' }}
+        >
           Download TikTok videos in Full HD 1080p MP4 or high quality MP3 audio fast, free, and without watermark on any device.
-        </p>
+        </motion.p>
 
         {/* Visual asset with measured scrim and resilient fallback */}
-        <div className="relative mx-auto mt-6 h-14 max-w-md overflow-hidden rounded-xl border border-slate-200/80 bg-slate-100 shadow-inner sm:h-16 dark:border-slate-800/80 dark:bg-slate-900">
+        <motion.div 
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="relative mx-auto mt-6 h-14 max-w-md overflow-hidden rounded-xl border border-slate-200/80 bg-slate-100 shadow-inner sm:h-16 dark:border-slate-800/80 dark:bg-slate-900"
+        >
           <img
             src={heroImage}
             alt="Dynamic digital stream visualization"
@@ -41,7 +69,7 @@ export const Hero: React.FC = () => {
           <div className="absolute inset-0 flex items-center justify-center text-xs font-medium text-slate-600 dark:text-slate-300">
             <span>Clean Stream Architecture · Direct Buffering · No Permanent Storage</span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

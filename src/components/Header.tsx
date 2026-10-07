@@ -21,7 +21,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenHistory, hist
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-md transition-colors dark:border-slate-800/80 dark:bg-slate-950/90">
+    <header className="sticky top-0 z-50 w-full glass transition-colors">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         
         {/* Zone 1: Single text element wordmark with custom emblem */}

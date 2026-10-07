@@ -11,7 +11,7 @@ export const SeoContentSection: React.FC = () => {
           <span className="text-xs font-semibold tracking-wider text-rose-500 uppercase dark:text-rose-400">
             Free Online Media Utility
           </span>
-          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+          <h2 className="mt-2 text-xl font-extrabold tracking-tight text-slate-900 sm:text-3xl dark:text-white">
             Best TikTok Video Downloader Without Watermark
           </h2>
           <p className="mt-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -82,7 +82,7 @@ export const SeoContentSection: React.FC = () => {
 
         {/* Device Compatibility Guide (Targeting long-tail search intent) */}
         <div className="border-t border-slate-100 pt-10 dark:border-slate-800">
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white text-center mb-8">
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white text-center mb-8">
             Supported Devices & Operating Systems
           </h3>
           

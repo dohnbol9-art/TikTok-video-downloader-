@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useImperativeHandle, forwardRef } from 'react';
 import { VideoMetadata, DownloadProgressState } from '../types';
 import {
   Download,
@@ -23,10 +23,14 @@ interface VideoResultCardProps {
   onDownloadComplete: (format: string) => void;
 }
 
-export const VideoResultCard: React.FC<VideoResultCardProps> = ({
+export interface VideoResultCardRef {
+  triggerDownload: () => void;
+}
+
+export const VideoResultCard = forwardRef<VideoResultCardRef, VideoResultCardProps>(({
   metadata,
   onDownloadComplete,
-}) => {
+}, ref) => {
   const [activeDownloadId, setActiveDownloadId] = useState<string | null>(null);
   const [downloadState, setDownloadState] = useState<DownloadProgressState>('idle');
   const [downloadPercent, setDownloadPercent] = useState<number>(0);
@@ -36,6 +40,15 @@ export const VideoResultCard: React.FC<VideoResultCardProps> = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [showPhoneGuide, setShowPhoneGuide] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
+
+  useImperativeHandle(ref, () => ({
+    triggerDownload: () => {
+      const primary = metadata.formats.find(f => f.id === 'mp4_hd' || f.id === 'mp4_sd') || metadata.formats[0];
+      if (primary) {
+        startDownload(primary.id, primary.downloadUrl, primary.format.toLowerCase());
+      }
+    }
+  }));
 
   // Helper to proxy external images through our server to bypass referrer/hotlinking blocks
   const getProxyUrl = (url?: string) => {
@@ -384,7 +397,7 @@ export const VideoResultCard: React.FC<VideoResultCardProps> = ({
             </div>
 
             {/* Video Caption */}
-            <h2 className="mt-2 text-base font-semibold text-slate-900 line-clamp-3 sm:text-lg dark:text-white">
+            <h2 className="mt-1.5 text-sm font-semibold text-slate-900 line-clamp-3 sm:text-base dark:text-white">
               {metadata.title || 'TikTok Video (High Definition)'}
             </h2>
           </div>
@@ -541,7 +554,7 @@ export const VideoResultCard: React.FC<VideoResultCardProps> = ({
                           {isSharing ? (
                             <>
                               <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                              <span>{downloadPercent > 0 ? `${downloadPercent}% Buffering...` : 'Preparing Video...'}</span>
+                              <span>{downloadPercent > 0 ? `${downloadPercent}%` : 'Preparing Video...'}</span>
                             </>
                           ) : (
                             <>
@@ -631,4 +644,4 @@ export const VideoResultCard: React.FC<VideoResultCardProps> = ({
       </div>
     </div>
   );
-};
+});

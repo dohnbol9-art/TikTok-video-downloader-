@@ -36,7 +36,7 @@ export const Features: React.FC = () => {
         <span className="text-xs font-semibold tracking-wider text-rose-500 uppercase dark:text-rose-400">
           Engineered for Speed
         </span>
-        <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+        <h2 className="mt-2 text-xl font-bold tracking-tight text-slate-900 sm:text-3xl dark:text-white">
           Why Choose QuickTok
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-sm text-slate-600 sm:text-base dark:text-slate-400">
