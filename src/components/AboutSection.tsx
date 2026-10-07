@@ -3,8 +3,8 @@ import { Shield, Cpu, Lock, CheckCircle } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
-      <div className="rounded-3xl border border-slate-200 bg-slate-50/70 p-6 sm:p-10 lg:p-12 dark:border-slate-800 dark:bg-slate-900/60">
+    <section id="about" className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+      <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 sm:p-8 dark:border-slate-800 dark:bg-[#15181d]">
         <div className="max-w-3xl">
           <span className="text-xs font-semibold tracking-wider text-rose-500 uppercase dark:text-rose-400">
             About The Platform

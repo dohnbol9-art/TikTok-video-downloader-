@@ -24,26 +24,26 @@ export const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+    <section id="how-it-works" className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
       <div className="text-center">
-        <span className="text-xs font-semibold tracking-wider text-rose-500 uppercase dark:text-rose-400">
+        <span className="text-[10px] font-bold tracking-wider text-rose-500 uppercase dark:text-rose-400">
           Simple 3-Step Process
         </span>
-        <h2 className="mt-2 text-xl font-bold tracking-tight text-slate-900 sm:text-3xl dark:text-white">
+        <h2 className="mt-1 text-lg font-bold tracking-tight text-slate-900 sm:text-2xl dark:text-white">
           How It Works
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-sm text-slate-600 sm:text-base dark:text-slate-400">
-          Get your permitted video content saved in seconds without complex tools or unwanted watermarks.
+        <p className="mx-auto mt-1 max-w-xl text-[11px] text-slate-600 sm:text-xs dark:text-slate-400">
+          Get your permitted video content saved in seconds without complex watermarks.
         </p>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
         {steps.map((step) => {
           const Icon = step.icon;
           return (
             <div
               key={step.num}
-              className="relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+              className="relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md dark:border-slate-800 dark:bg-[#15181d]"
             >
               <div>
                 <div className="flex items-center justify-between">

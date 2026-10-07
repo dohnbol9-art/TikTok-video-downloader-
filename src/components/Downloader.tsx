@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect, createRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import { Clipboard, X, ArrowRight, Loader2, AlertCircle, List, Sparkles, CheckSquare, Square, DownloadCloud } from 'lucide-react';
 import { ProcessingStatus, VideoMetadata } from '../types';
 import { validateClientTikTokUrl } from '../utils/url';
@@ -288,42 +287,38 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
   const successfulItems = batchItems.filter(i => i.status === 'SUCCESS').length;
 
   return (
-    <section id="downloader" className="mx-auto max-w-4xl px-4 py-4 sm:px-6">
+    <section id="downloader" className="mx-auto max-w-4xl px-4 py-2 sm:px-6">
       {/* Mode Switcher */}
-      <div className="mb-4 flex gap-2">
+      <div className="mb-3 flex gap-2">
         <button
           onClick={() => setIsBatchMode(false)}
-          className={`flex-1 rounded-xl py-2 text-xs sm:text-sm font-bold transition-all ${!isBatchMode ? 'bg-rose-600 text-white shadow-md' : 'bg-white text-slate-600 border border-slate-200 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-400'}`}
+          className={`flex-1 rounded-lg py-1.5 text-[10px] sm:text-xs font-bold transition-all ${!isBatchMode ? 'bg-rose-600 text-white shadow-md' : 'bg-white text-slate-600 border border-slate-200 dark:bg-slate-900/40 dark:border-slate-800 dark:text-slate-400'}`}
         >
-          Single Download
+          Single Link
         </button>
         <button
           onClick={() => setIsBatchMode(true)}
-          className={`flex-1 rounded-xl py-2 text-xs sm:text-sm font-bold transition-all ${isBatchMode ? 'bg-rose-600 text-white shadow-md' : 'bg-white text-slate-600 border border-slate-200 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-400'}`}
+          className={`flex-1 rounded-lg py-1.5 text-[10px] sm:text-xs font-bold transition-all ${isBatchMode ? 'bg-rose-600 text-white shadow-md' : 'bg-white text-slate-600 border border-slate-200 dark:bg-slate-900/40 dark:border-slate-800 dark:text-slate-400'}`}
         >
-          Batch Download (Multi)
+          Batch Mode (Multi)
         </button>
       </div>
 
       {/* Main Downloader Card */}
-      <motion.div 
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="relative rounded-2xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/40 sm:p-6 dark:border-slate-800 dark:bg-slate-900/90 dark:shadow-none"
-      >
+      <div className="relative rounded-xl border border-slate-200 bg-white p-3 shadow-lg shadow-slate-200/30 sm:p-5 dark:border-slate-800 dark:bg-[#15181d] dark:shadow-none">
         
-        <div className="mb-3 flex items-center justify-between">
-          <span className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider dark:text-slate-400">
-            {isBatchMode ? 'Enter Multiple TikTok URLs (one per line):' : 'Paste TikTok Video URL:'}
+        <div className="mb-2 flex items-center justify-between">
+          <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase tracking-wider dark:text-slate-400">
+            {isBatchMode ? 'Enter TikTok URLs (one per line):' : 'Paste TikTok Video URL:'}
           </span>
-          <span className="text-[10px] sm:text-[11px] text-rose-500 font-bold flex items-center gap-1 bg-rose-50 dark:bg-rose-950/30 px-2 py-0.5 rounded-full">
-            <Sparkles className="h-3 w-3" />
-            HD 1080p Ready
+          <span className="text-[9px] sm:text-[10px] text-rose-500 font-bold flex items-center gap-1 bg-rose-50 dark:bg-rose-950/30 px-2 py-0.5 rounded-full">
+            <Sparkles className="h-2.5 w-2.5" />
+            1080p HD Ready
           </span>
         </div>
 
         {/* Input Area */}
-        <div className="relative flex flex-col gap-3">
+        <div className="relative flex flex-col gap-2">
           {!isBatchMode ? (
             <div className="relative flex-1">
               <input
@@ -334,14 +329,14 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
                 onKeyDown={(e) => e.key === 'Enter' && validateAndProcess(url)}
                 placeholder="https://www.tiktok.com/@user/video/..."
                 disabled={status === 'VALIDATING' || status === 'PROCESSING'}
-                className="w-full rounded-xl border-2 border-slate-200 bg-slate-50/50 px-4 py-3 text-sm sm:text-base font-medium text-slate-900 focus:border-rose-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-rose-500/10 dark:border-slate-700 dark:bg-slate-950/60 dark:text-white dark:focus:border-rose-500"
+                className="w-full rounded-lg border-2 border-slate-100 bg-slate-50/50 px-3 py-2 text-xs sm:text-sm font-medium text-slate-900 focus:border-rose-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-rose-500/5 dark:border-slate-800 dark:bg-slate-950/60 dark:text-white dark:focus:border-rose-500"
               />
-              <div className="absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-1">
+              <div className="absolute right-1.5 top-1/2 flex -translate-y-1/2 items-center gap-1">
                 {url && (
-                  <button onClick={handleClear} className="p-1.5 text-slate-400 hover:text-slate-600"><X className="h-4 w-4" /></button>
+                  <button onClick={handleClear} className="p-1 text-slate-400 hover:text-slate-600"><X className="h-3.5 w-3.5" /></button>
                 )}
-                <button onClick={handlePaste} className="flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-bold text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-800">
-                  <Clipboard className="h-3.5 w-3.5" />
+                <button onClick={handlePaste} className="flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-bold text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-800">
+                  <Clipboard className="h-3 w-3" />
                   <span className="hidden sm:inline">Paste</span>
                 </button>
               </div>
@@ -353,13 +348,13 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
                 value={batchUrls}
                 onChange={(e) => setBatchUrls(e.target.value)}
                 placeholder="https://www.tiktok.com/@user/video/123...&#10;https://vm.tiktok.com/XYZ..."
-                rows={4}
+                rows={3}
                 disabled={isProcessingBatch}
-                className="w-full rounded-xl border-2 border-slate-200 bg-slate-50/50 px-4 py-3 text-xs sm:text-sm font-medium text-slate-900 focus:border-rose-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-rose-500/10 dark:border-slate-700 dark:bg-slate-950/60 dark:text-white dark:focus:border-rose-500"
+                className="w-full rounded-lg border-2 border-slate-100 bg-slate-50/50 px-3 py-2 text-[11px] sm:text-xs font-medium text-slate-900 focus:border-rose-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-rose-500/5 dark:border-slate-800 dark:bg-slate-950/60 dark:text-white dark:focus:border-rose-500"
               />
-              <div className="mt-2 flex justify-end gap-2">
-                <button onClick={handleClear} className="text-[10px] sm:text-xs font-bold text-slate-500 hover:text-rose-500">Clear All</button>
-                <button onClick={handlePaste} className="text-[10px] sm:text-xs font-bold text-rose-500 flex items-center gap-1"><Clipboard className="h-3 w-3" /> Paste</button>
+              <div className="mt-1 flex justify-end gap-2">
+                <button onClick={handleClear} className="text-[9px] sm:text-[10px] font-bold text-slate-500 hover:text-rose-500">Clear All</button>
+                <button onClick={handlePaste} className="text-[9px] sm:text-[10px] font-bold text-rose-500 flex items-center gap-1"><Clipboard className="h-2.5 w-2.5" /> Paste</button>
               </div>
             </div>
           )}
@@ -368,86 +363,73 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
             type="button"
             onClick={isBatchMode ? handleStartBatch : () => validateAndProcess(url)}
             disabled={isProcessingBatch || (status === 'PROCESSING') || (!isBatchMode && !url.trim()) || (isBatchMode && !batchUrls.trim())}
-            className="flex h-12 sm:h-14 items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-rose-600 via-rose-500 to-rose-600 px-8 text-sm sm:text-base font-bold text-white shadow-lg shadow-rose-500/30 transition-all hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-rose-500/30 disabled:opacity-50 disabled:scale-100 disabled:cursor-not-allowed"
+            className="flex h-10 sm:h-11 items-center justify-center gap-2 rounded-lg bg-gradient-to-br from-rose-600 to-rose-500 px-6 text-xs sm:text-sm font-bold text-white shadow-md shadow-rose-500/20 transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-50 disabled:scale-100 disabled:cursor-not-allowed"
           >
             {isProcessingBatch || status === 'PROCESSING' || status === 'VALIDATING' ? (
               <>
-                <Loader2 className="h-5 w-5 animate-spin" />
-                <span>{isBatchMode ? 'Processing Queue...' : 'Searching Video...'}</span>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                <span>{isBatchMode ? 'Processing...' : 'Searching...'}</span>
               </>
             ) : (
               <>
-                <span>{isBatchMode ? 'Process All Links' : 'Download Video'}</span>
-                <ArrowRight className="h-5 w-5" />
+                <span>{isBatchMode ? 'Process Links' : 'Download Now'}</span>
+                <ArrowRight className="h-4 w-4" />
               </>
             )}
           </button>
         </div>
 
         {/* Feedback / Error */}
-        <AnimatePresence>
-          {!isBatchMode && status === 'ERROR' && (
-            <motion.div 
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="mt-4 flex items-start gap-3 overflow-hidden rounded-xl border border-rose-200 bg-rose-50 p-3 text-xs sm:text-sm text-rose-800 dark:border-rose-900/50 dark:bg-rose-950/40 dark:text-rose-200"
-            >
-              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-              <span className="font-semibold">{errorMessage}</span>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+        {!isBatchMode && status === 'ERROR' && (
+          <div className="mt-3 flex items-start gap-2 rounded-lg border border-rose-200 bg-rose-50 p-2.5 text-[11px] sm:text-xs text-rose-800 dark:border-rose-900/50 dark:bg-rose-950/40 dark:text-rose-200">
+            <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+            <span className="font-semibold">{errorMessage}</span>
+          </div>
+        )}
+      </div>
 
       {/* Batch Results List */}
       {isBatchMode && batchItems.length > 0 && (
-        <div className="mt-8 space-y-4">
-          <div className="flex items-center justify-between px-2">
-            <h3 className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
-              <List className="h-4 w-4 text-rose-500" />
-              Download Queue ({successfulItems}/{batchItems.length})
+        <div className="mt-6 space-y-3">
+          <div className="flex items-center justify-between px-1">
+            <h3 className="text-[10px] sm:text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
+              <List className="h-3.5 w-3.5 text-rose-500" />
+              Queue ({successfulItems}/{batchItems.length})
             </h3>
             
             {!isProcessingBatch && successfulItems > 0 && (
               <div className="flex flex-wrap gap-2 justify-end">
                 <button 
                   onClick={toggleSelectAll}
-                  className="rounded-lg px-3 py-2 text-[10px] sm:text-xs font-bold text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                  className="rounded-md px-2 py-1 text-[9px] sm:text-[10px] font-bold text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                 >
-                  {batchItems.every(i => i.isSelected) ? 'Deselect All' : 'Select All'}
+                  {batchItems.every(i => i.isSelected) ? 'Deselect' : 'Select All'}
                 </button>
                 <button
                   onClick={handleDownloadAll}
-                  className="flex items-center gap-2 rounded-xl bg-rose-600 px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-lg shadow-rose-500/30 hover:bg-rose-700 hover:scale-105 active:scale-95 transition-all"
+                  className="flex items-center gap-1.5 rounded-lg bg-rose-600 px-3 py-1 text-[10px] sm:text-xs font-bold text-white shadow-md shadow-rose-500/20 hover:bg-rose-700 transition-all"
                 >
-                  <DownloadCloud className="h-4 w-4" />
-                  One-Click Download ({batchItems.filter(i => i.isSelected && i.status === 'SUCCESS').length} Videos)
+                  <DownloadCloud className="h-3 w-3" />
+                  One-Click Download
                 </button>
               </div>
             )}
           </div>
           
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 gap-3">
             {batchItems.map((item) => (
-              <motion.div 
-                layout
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                key={item.id} 
-                className="relative"
-              >
+              <div key={item.id} className="relative">
                 {item.status === 'SUCCESS' && item.metadata ? (
-                  <div className="flex flex-col gap-2">
-                    <div className="absolute left-2 top-4 z-10">
+                  <div className="flex flex-col gap-1.5">
+                    <div className="absolute left-1.5 top-3 z-10">
                       <button 
                         onClick={() => toggleItemSelection(item.id)}
-                        className="p-1 rounded bg-white/80 dark:bg-slate-900/80 shadow-sm border border-slate-200 dark:border-slate-700"
+                        className="p-1 rounded bg-white/90 dark:bg-slate-900/90 shadow-sm border border-slate-200 dark:border-slate-800"
                       >
-                        {item.isSelected ? <CheckSquare className="h-5 w-5 text-rose-600" /> : <Square className="h-5 w-5 text-slate-400" />}
+                        {item.isSelected ? <CheckSquare className="h-4 w-4 text-rose-600" /> : <Square className="h-4 w-4 text-slate-400" />}
                       </button>
                     </div>
-                    <div className={item.isSelected ? '' : 'opacity-60 grayscale-[50%]'}>
+                    <div className={item.isSelected ? '' : 'opacity-60 grayscale-[30%]'}>
                       <VideoResultCard
                         ref={batchCardRefs.current[item.id]}
                         metadata={item.metadata}
@@ -456,56 +438,49 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
                     </div>
                   </div>
                 ) : (
-                  <div className="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 dark:border-slate-800 dark:bg-slate-900">
+                  <div className="rounded-lg border border-slate-200 bg-white p-2 sm:p-3 dark:border-slate-800 dark:bg-slate-900/40">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3 overflow-hidden">
+                      <div className="flex items-center gap-2 overflow-hidden">
                         {item.status === 'PROCESSING' ? (
-                          <Loader2 className="h-5 w-5 animate-spin text-rose-500" />
+                          <Loader2 className="h-4 w-4 animate-spin text-rose-500" />
                         ) : item.status === 'ERROR' ? (
-                          <AlertCircle className="h-5 w-5 text-rose-500" />
+                          <AlertCircle className="h-4 w-4 text-rose-500" />
                         ) : (
-                          <div className="h-2 w-2 rounded-full bg-slate-300 animate-pulse" />
+                          <div className="h-1.5 w-1.5 rounded-full bg-slate-300" />
                         )}
-                        <span className="truncate text-[10px] sm:text-xs font-mono text-slate-500 dark:text-slate-400">
+                        <span className="truncate text-[9px] sm:text-[10px] font-mono text-slate-500 dark:text-slate-400">
                           {item.url}
                         </span>
                       </div>
                       {item.status === 'ERROR' && (
-                        <span className="text-[9px] sm:text-[10px] font-bold text-rose-500 uppercase">{item.error || 'Failed'}</span>
+                        <span className="text-[8px] sm:text-[9px] font-bold text-rose-500 uppercase">{item.error || 'Failed'}</span>
                       )}
                     </div>
                   </div>
                 )}
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       )}
 
       {/* Single Result */}
-      <AnimatePresence>
-        {!isBatchMode && status === 'SUCCESS' && metadata && (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            id="video-download-result" 
-            className="mt-8"
-          >
-            <VideoResultCard
-              metadata={metadata}
-              onDownloadComplete={(format) => {
-                onSuccessDownload({
-                  url: metadata.url,
-                  title: metadata.title,
-                  author: metadata.author.nickname || metadata.author.username,
-                  format,
-                  thumbnailUrl: metadata.thumbnailUrl,
-                });
-              }}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {!isBatchMode && status === 'SUCCESS' && metadata && (
+        <div id="video-download-result" className="mt-6">
+          <VideoResultCard
+            metadata={metadata}
+            onDownloadComplete={(format) => {
+              onSuccessDownload({
+                url: metadata.url,
+                title: metadata.title,
+                author: metadata.author.nickname || metadata.author.username,
+                format,
+                thumbnailUrl: metadata.thumbnailUrl,
+              });
+            }}
+          />
+        </div>
+      )}
     </section>
   );
 };

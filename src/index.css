@@ -16,6 +16,52 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Deep Dark Mode Overrides */
+.dark {
+  background-color: #0b0d10;
+  color: #f8fafc;
+}
+
+.dark body {
+  background-color: #0b0d10;
+}
+
+/* Specific Dark Mode Component Colors */
+.dark .glass {
+  background-color: #0f1115;
+  border-bottom: 1px solid #1f2937;
+  backdrop-blur: none; /* Remove blur to prevent gray look */
+}
+
+.dark .rounded-xl, 
+.dark .rounded-2xl {
+  background-color: #15181d !important;
+  border-color: #1f2937 !important;
+  box-shadow: none !important;
+}
+
+.dark input, 
+.dark textarea, 
+.dark select {
+  background-color: #0f1115 !important;
+  border-color: #1f2937 !important;
+  color: #f8fafc !important;
+}
+
+.dark .text-slate-600, 
+.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .border-slate-200 {
+  border-color: #1f2937 !important;
+}
+
+.dark .bg-slate-50,
+.dark .bg-slate-100 {
+  background-color: #0f1115 !important;
+}
+
 ::selection {
   background-color: rgba(244, 63, 94, 0.2);
   color: #e11d48;

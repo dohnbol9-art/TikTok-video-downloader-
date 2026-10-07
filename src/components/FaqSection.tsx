@@ -53,20 +53,20 @@ export const FaqSection: React.FC = () => {
   ];
 
   return (
-    <section id="faq" className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+    <section id="faq" className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
       <div className="text-center">
-        <span className="text-xs font-semibold tracking-wider text-rose-500 uppercase dark:text-rose-400">
+        <span className="text-[10px] font-bold tracking-wider text-rose-500 uppercase dark:text-rose-400">
           Got Questions?
         </span>
-        <h2 className="mt-2 text-xl font-bold tracking-tight text-slate-900 sm:text-3xl dark:text-white">
+        <h2 className="mt-1 text-lg font-bold tracking-tight text-slate-900 sm:text-2xl dark:text-white">
           Frequently Asked Questions
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-sm text-slate-600 sm:text-base dark:text-slate-400">
+        <p className="mx-auto mt-1 max-w-xl text-[11px] text-slate-600 sm:text-xs dark:text-slate-400">
           Everything you need to know about QuickTok and supported video processing.
         </p>
       </div>
 
-      <div className="mt-10 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900">
+      <div className="mt-6 divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white dark:divide-slate-800 dark:border-slate-800 dark:bg-[#15181d]">
         {faqs.map((faq, idx) => {
           const isOpen = openIndex === idx;
           return (

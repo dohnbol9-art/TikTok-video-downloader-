@@ -7,16 +7,16 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenAdmin }) => {
   return (
-    <footer className="mt-20 border-t border-slate-200/80 bg-white dark:border-slate-800/80 dark:bg-slate-950">
+    <footer className="mt-20 border-t border-slate-200/80 bg-white dark:border-slate-800/80 dark:bg-[#0f1115]">
       
       {/* Responsible Use Notice Banner */}
-      <div className="border-b border-slate-100 bg-slate-50/50 py-3 text-center text-xs text-slate-500 dark:border-slate-850 dark:bg-slate-900/40 dark:text-slate-400">
+      <div className="border-b border-slate-100 bg-slate-50/50 py-3 text-center text-xs text-slate-500 dark:border-slate-800 dark:bg-[#0b0d10] dark:text-slate-400">
         <div className="mx-auto max-w-4xl px-4">
           <span className="font-semibold text-slate-700 dark:text-slate-300">Responsible Use:</span> Only download content when you have the right or permission to do so. Respect copyright, platform terms, and applicable laws.
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           
           {/* Brand mark */}

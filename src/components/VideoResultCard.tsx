@@ -344,11 +344,11 @@ export const VideoResultCard = forwardRef<VideoResultCardRef, VideoResultCardPro
   const primaryVideoFormat = metadata.formats.find((f) => f.type === 'video');
 
   return (
-    <div className="overflow-hidden rounded-2xl border-2 border-rose-500/20 bg-white shadow-xl shadow-rose-500/5 transition-all dark:border-rose-500/20 dark:bg-slate-900/90">
+    <div className="overflow-hidden rounded-xl border border-rose-500/10 bg-white shadow-lg shadow-rose-500/5 transition-all dark:border-rose-500/10 dark:bg-[#15181d]">
       {/* Video Content Header */}
-      <div className="flex flex-col gap-5 p-5 sm:flex-row sm:items-start sm:p-6">
+      <div className="flex flex-col gap-3 p-3 sm:flex-row sm:items-start sm:p-4">
         {/* Video Thumbnail */}
-        <div className="relative aspect-[9/16] w-28 shrink-0 overflow-hidden rounded-xl bg-slate-100 shadow-inner sm:w-36 dark:bg-slate-800">
+        <div className="relative aspect-[9/16] w-20 shrink-0 overflow-hidden rounded-lg bg-slate-100 shadow-inner sm:w-28 dark:bg-slate-800">
           {metadata.thumbnailUrl ? (
             <img
               src={getProxyUrl(metadata.thumbnailUrl)}
@@ -360,63 +360,63 @@ export const VideoResultCard = forwardRef<VideoResultCardRef, VideoResultCardPro
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center text-slate-400">
-              <Video className="h-8 w-8" />
+              <Video className="h-6 w-6" />
             </div>
           )}
 
           {metadata.durationFormatted && (
-            <div className="absolute right-2 bottom-2 flex items-center gap-1 rounded bg-black/80 px-1.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-xs">
-              <Clock className="h-3 w-3" />
+            <div className="absolute right-1 bottom-1 flex items-center gap-1 rounded bg-black/70 px-1 py-0.5 text-[9px] font-semibold text-white backdrop-blur-xs">
+              <Clock className="h-2.5 w-2.5" />
               <span>{metadata.durationFormatted}</span>
             </div>
           )}
         </div>
 
         {/* Video Info and Actions */}
-        <div className="flex flex-1 flex-col justify-between space-y-4">
+        <div className="flex flex-1 flex-col justify-between space-y-2">
           <div>
             {/* Creator handle */}
-            <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+            <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-300">
               {metadata.author.avatarUrl ? (
                 <img
                   src={getProxyUrl(metadata.author.avatarUrl)}
                   alt=""
-                  className="h-6 w-6 rounded-full object-cover border border-rose-200 dark:border-slate-700"
+                  className="h-5 w-5 rounded-full object-cover border border-rose-100 dark:border-slate-700"
                 />
               ) : (
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-rose-100 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400">
-                  <User className="h-3.5 w-3.5" />
+                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-100 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400">
+                  <User className="h-3 w-3" />
                 </div>
               )}
-              <span className="font-semibold text-slate-900 dark:text-white">
+              <span className="font-bold text-slate-900 dark:text-white">
                 {metadata.author.nickname || metadata.author.username}
               </span>
-              <span className="text-xs text-slate-400">
+              <span className="text-[10px] text-slate-400">
                 @{metadata.author.username}
               </span>
             </div>
 
             {/* Video Caption */}
-            <h2 className="mt-1.5 text-sm font-semibold text-slate-900 line-clamp-3 sm:text-base dark:text-white">
+            <h2 className="mt-1 text-[11px] font-semibold text-slate-900 line-clamp-2 sm:text-xs dark:text-white leading-snug">
               {metadata.title || 'TikTok Video (High Definition)'}
             </h2>
           </div>
 
           {/* Formats and Download Buttons */}
-          <div className="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+          <div className="space-y-2 pt-2 border-t border-slate-50 dark:border-slate-800/50">
             <div className="flex items-center justify-between">
-              <span className="flex items-center gap-1.5 text-xs font-bold text-slate-800 uppercase tracking-wider dark:text-slate-200">
-                <Sparkles className="h-3.5 w-3.5 text-rose-500" />
-                <span>Available Video Formats</span>
+              <span className="flex items-center gap-1 text-[9px] font-bold text-slate-400 uppercase tracking-wider">
+                <Sparkles className="h-2.5 w-2.5 text-rose-500" />
+                <span>Media Formats</span>
               </span>
               <button
                 type="button"
                 onClick={() => setShowPhoneGuide((prev) => !prev)}
-                className="flex items-center gap-1 text-xs font-medium text-rose-500 hover:text-rose-600 dark:text-rose-400"
+                className="flex items-center gap-0.5 text-[9px] font-bold text-rose-500 hover:text-rose-600"
               >
-                <Smartphone className="h-3.5 w-3.5" />
-                <span>Phone Gallery Guide</span>
-                <ChevronDown className={`h-3 w-3 transition-transform ${showPhoneGuide ? 'rotate-180' : ''}`} />
+                <Smartphone className="h-2.5 w-2.5" />
+                <span>Gallery Guide</span>
+                <ChevronDown className={`h-2.5 w-2.5 transition-transform ${showPhoneGuide ? 'rotate-180' : ''}`} />
               </button>
             </div>
 

@@ -31,27 +31,27 @@ export const Features: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+    <section id="features" className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
       <div className="text-center">
-        <span className="text-xs font-semibold tracking-wider text-rose-500 uppercase dark:text-rose-400">
+        <span className="text-[10px] font-bold tracking-wider text-rose-500 uppercase dark:text-rose-400">
           Engineered for Speed
         </span>
-        <h2 className="mt-2 text-xl font-bold tracking-tight text-slate-900 sm:text-3xl dark:text-white">
+        <h2 className="mt-1 text-lg font-bold tracking-tight text-slate-900 sm:text-2xl dark:text-white">
           Why Choose QuickTok
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-sm text-slate-600 sm:text-base dark:text-slate-400">
+        <p className="mx-auto mt-1 max-w-xl text-[11px] text-slate-600 sm:text-xs dark:text-slate-400">
           A modern downloader focused on performance, privacy, and genuine technical execution.
         </p>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature, idx) => {
           const Icon = feature.icon;
           const isMarquee = idx === 0;
           return (
             <div
               key={feature.title}
-              className={`rounded-2xl border border-slate-200 bg-white p-6 shadow-xs transition-all hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700 ${
+              className={`rounded-2xl border border-slate-200 bg-white p-6 shadow-xs transition-all hover:border-slate-300 dark:border-slate-800 dark:bg-[#15181d] dark:hover:border-slate-700 ${
                 isMarquee ? 'sm:col-span-2 lg:col-span-2' : ''
               }`}
             >

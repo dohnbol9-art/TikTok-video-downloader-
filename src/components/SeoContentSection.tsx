@@ -3,19 +3,19 @@ import { CheckCircle2, Download, ShieldCheck, Zap, Smartphone, Monitor, Music, F
 
 export const SeoContentSection: React.FC = () => {
   return (
-    <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
-      <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-10 lg:p-12 shadow-sm dark:border-slate-800 dark:bg-slate-900/60">
+    <section className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-8 shadow-sm dark:border-slate-800 dark:bg-[#15181d]">
         
         {/* Main SEO Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs font-semibold tracking-wider text-rose-500 uppercase dark:text-rose-400">
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <span className="text-[10px] font-bold tracking-wider text-rose-500 uppercase dark:text-rose-400">
             Free Online Media Utility
           </span>
-          <h2 className="mt-2 text-xl font-extrabold tracking-tight text-slate-900 sm:text-3xl dark:text-white">
+          <h2 className="mt-1 text-lg font-extrabold tracking-tight text-slate-900 sm:text-2xl dark:text-white">
             Best TikTok Video Downloader Without Watermark
           </h2>
-          <p className="mt-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            <strong>QuickTok</strong> is a fast, reliable, and completely free online <strong>TikTok video downloader</strong> that enables you to save any public TikTok video in crystal-clear Full HD 1080p resolution without the TikTok watermark logo. Works seamlessly on iPhone, Android, PC, Mac, and tablets without requiring any software or app installation.
+          <p className="mt-2 text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>QuickTok</strong> is a fast, reliable, and completely free online <strong>TikTok video downloader</strong> that enables you to save any public TikTok video in Full HD 1080p resolution without the TikTok watermark logo. Works seamlessly on iPhone, Android, PC, Mac, and tablets without requiring any software or app installation.
           </p>
         </div>
 
@@ -88,7 +88,7 @@ export const SeoContentSection: React.FC = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             
-            <div className="rounded-2xl border border-slate-200/70 bg-slate-50/50 p-5 dark:border-slate-800 dark:bg-slate-800/40">
+            <div className="rounded-2xl border border-slate-200/70 bg-slate-50/50 p-5 dark:border-slate-800 dark:bg-[#0b0d10]">
               <div className="flex items-center gap-3 mb-3">
                 <Smartphone className="h-5 w-5 text-rose-500" />
                 <h4 className="font-bold text-slate-900 dark:text-white text-sm">iPhone & iPad (iOS)</h4>
@@ -98,7 +98,7 @@ export const SeoContentSection: React.FC = () => {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-200/70 bg-slate-50/50 p-5 dark:border-slate-800 dark:bg-slate-800/40">
+            <div className="rounded-2xl border border-slate-200/70 bg-slate-50/50 p-5 dark:border-slate-800 dark:bg-[#0b0d10]">
               <div className="flex items-center gap-3 mb-3">
                 <Smartphone className="h-5 w-5 text-rose-500" />
                 <h4 className="font-bold text-slate-900 dark:text-white text-sm">Android Phones</h4>
@@ -108,7 +108,7 @@ export const SeoContentSection: React.FC = () => {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-200/70 bg-slate-50/50 p-5 dark:border-slate-800 dark:bg-slate-800/40">
+            <div className="rounded-2xl border border-slate-200/70 bg-slate-50/50 p-5 dark:border-slate-800 dark:bg-[#0b0d10]">
               <div className="flex items-center gap-3 mb-3">
                 <Monitor className="h-5 w-5 text-rose-500" />
                 <h4 className="font-bold text-slate-900 dark:text-white text-sm">PC, Mac & Linux</h4>
