@@ -113,7 +113,7 @@ body {
   background-clip: content-box;
 }
 
-.dark ::webkit-scrollbar-thumb {
+.dark ::-webkit-scrollbar-thumb {
   background: #334155;
   border: 3px solid transparent;
   background-clip: content-box;
@@ -124,7 +124,7 @@ body {
   background-clip: content-box;
 }
 
-.dark ::webkit-scrollbar-thumb:hover {
+.dark ::-webkit-scrollbar-thumb:hover {
   background: #475569;
   background-clip: content-box;
 }

@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
-import { Sun, Moon, Menu, X, Shield, History } from 'lucide-react';
+import { Sun, Moon, Menu, X, History } from 'lucide-react';
 
 interface HeaderProps {
-  onOpenAdmin: () => void;
   onOpenHistory: () => void;
   historyCount: number;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenHistory, historyCount }) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenHistory, historyCount }) => {
   const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -91,16 +90,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenHistory, hist
             )}
           </button>
 
-          {/* Admin Metrics Button */}
-          <button
-            onClick={onOpenAdmin}
-            title="Admin Console"
-            aria-label="Open server status and administration console"
-            className="hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900 sm:flex dark:border-[#252a33] dark:text-[#b8bec9] dark:hover:bg-[#15181d] dark:hover:text-white"
-          >
-            <Shield className="h-4 w-4" />
-          </button>
-
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
@@ -154,16 +143,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenHistory, hist
               className="text-left text-sm font-medium text-slate-700 dark:text-white"
             >
               About QuickTok
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenAdmin();
-              }}
-              className="flex items-center gap-2 pt-2 text-left text-sm font-medium text-rose-500 dark:text-rose-400 border-t border-slate-100 dark:border-[#252a33]"
-            >
-              <Shield className="h-4 w-4" />
-              Admin Status Console
             </button>
           </div>
         </div>

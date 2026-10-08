@@ -2,10 +2,9 @@ import React from 'react';
 
 interface FooterProps {
   onOpenLegal: (type: 'terms' | 'privacy') => void;
-  onOpenAdmin: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenAdmin }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
   return (
     <footer className="mt-20 border-t border-slate-200/80 bg-white dark:border-[#252a33] dark:bg-[#101217]">
       
@@ -60,13 +59,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenAdmin }) => {
               className="hover:text-rose-500"
             >
               Privacy Policy
-            </button>
-            <button
-              type="button"
-              onClick={onOpenAdmin}
-              className="text-rose-500 hover:text-rose-600 dark:text-rose-400"
-            >
-              Admin Status
             </button>
           </div>
         </div>

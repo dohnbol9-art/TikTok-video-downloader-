@@ -15,7 +15,6 @@ import { AboutSection } from './components/AboutSection';
 import { SeoContentSection } from './components/SeoContentSection';
 import { Footer } from './components/Footer';
 import { DownloadHistory } from './components/DownloadHistory';
-import { AdminDashboard } from './components/AdminDashboard';
 import { LegalModal } from './components/LegalModal';
 import { Banner300x250Ad, Banner320x50Ad, SocialBarAd } from './components/ads';
 import { HistoryItem } from './types';
@@ -29,7 +28,6 @@ import {
 export default function App() {
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
-  const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [legalModalType, setLegalModalType] = useState<'terms' | 'privacy' | null>(null);
 
   // Initialize history on mount
@@ -77,7 +75,6 @@ export default function App() {
         
         {/* 1. Main website/header */}
         <Header
-          onOpenAdmin={() => setIsAdminOpen(true)}
           onOpenHistory={() => setIsHistoryOpen(true)}
           historyCount={history.length}
         />
@@ -110,7 +107,6 @@ export default function App() {
         {/* 6. Footer */}
         <Footer
           onOpenLegal={(type) => setLegalModalType(type)}
-          onOpenAdmin={() => setIsAdminOpen(true)}
         />
 
         {/* 7. Fixed social-bar advertisement at bottom of viewport */}
@@ -123,11 +119,6 @@ export default function App() {
           history={history}
           onDeleteItem={handleDeleteHistoryItem}
           onClearAll={handleClearHistory}
-        />
-
-        <AdminDashboard
-          isOpen={isAdminOpen}
-          onClose={() => setIsAdminOpen(false)}
         />
 
         <LegalModal
