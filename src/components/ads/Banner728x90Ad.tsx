@@ -1,11 +1,11 @@
 import React from 'react';
 
-export interface Banner320x50AdProps {
+export interface Banner728x90AdProps {
   className?: string;
   showLabel?: boolean;
 }
 
-export const Banner320x50Ad: React.FC<Banner320x50AdProps> = ({
+export const Banner728x90Ad: React.FC<Banner728x90AdProps> = ({
   className = '',
   showLabel = true,
 }) => {
@@ -18,8 +18,8 @@ export const Banner320x50Ad: React.FC<Banner320x50AdProps> = ({
     body {
       margin: 0;
       padding: 0;
-      width: 320px;
-      height: 50px;
+      width: 728px;
+      height: 90px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -31,21 +31,21 @@ export const Banner320x50Ad: React.FC<Banner320x50AdProps> = ({
 <body>
   <script type="text/javascript">
     atOptions = {
-      'key' : '9f6b827cfa05aa4dad32773ba64ff559',
+      'key' : 'bbc77ec8a3b25a80ab8c32f45a41f201',
       'format' : 'iframe',
-      'height' : 50,
-      'width' : 320,
+      'height' : 90,
+      'width' : 728,
       'params' : {}
     };
   </script>
-  <script type="text/javascript" src="https://www.highrevenueformat.com/9f6b827cfa05aa4dad32773ba64ff559/invoke.js"></script>
+  <script type="text/javascript" src="https://www.highrevenueformat.com/bbc77ec8a3b25a80ab8c32f45a41f201/invoke.js"></script>
 </body>
 </html>`;
 
   return (
     <section
-      aria-label="Mobile Advertisement"
-      className={`mx-auto my-4 flex w-full max-w-full flex-col items-center justify-center overflow-hidden px-2 ${className}`}
+      aria-label="Leaderboard Advertisement"
+      className={`mx-auto my-6 flex w-full max-w-full flex-col items-center justify-center overflow-hidden px-2 ${className}`}
     >
       {showLabel && (
         <span className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-[#8b93a1]">
@@ -53,21 +53,19 @@ export const Banner320x50Ad: React.FC<Banner320x50AdProps> = ({
         </span>
       )}
       <div
-        className="flex items-center justify-center overflow-hidden transition-all"
+        className="flex items-center justify-center overflow-hidden max-w-full transition-all"
         style={{
-          width: '320px',
-          height: '50px',
-          maxWidth: '100%',
+          width: '728px',
+          height: '90px',
         }}
       >
         <iframe
-          title="Advertisement 320x50"
-          width={320}
-          height={50}
+          title="Advertisement 728x90"
+          width={728}
+          height={90}
           style={{
-            width: '320px',
-            height: '50px',
-            maxWidth: '100%',
+            width: '728px',
+            height: '90px',
             border: 'none',
             overflow: 'hidden',
             backgroundColor: 'transparent',

@@ -2,7 +2,6 @@ import express from 'express';
 import { securityHeaders, corsMiddleware } from './middleware/security.ts';
 import { errorHandler } from './middleware/errorHandler.ts';
 import { videoRouter } from './routes/video.routes.ts';
-import { adminRouter } from './routes/admin.routes.ts';
 import { healthRouter } from './routes/health.routes.ts';
 
 export const app = express();
@@ -23,7 +22,6 @@ app.use(corsMiddleware);
 
 // Mount API routes
 app.use('/api/video', videoRouter);
-app.use('/api/admin', adminRouter);
 app.use('/api/health', healthRouter);
 
 // Central error handler

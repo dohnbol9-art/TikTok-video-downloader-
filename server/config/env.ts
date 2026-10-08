@@ -7,7 +7,6 @@ export const config = {
   publicAppUrl: process.env.PUBLIC_APP_URL || process.env.APP_URL || 'https://quicktok.online',
   videoProviderBaseUrl: process.env.VIDEO_PROVIDER_BASE_URL || '',
   videoProviderApiKey: process.env.VIDEO_PROVIDER_API_KEY || '',
-  adminAccessToken: process.env.ADMIN_ACCESS_TOKEN || '',
   isProduction: process.env.NODE_ENV === 'production',
   maxRequestTimeoutMs: 15000,
   rateLimitWindowMs: 60 * 1000, // 1 minute

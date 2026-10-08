@@ -1,11 +1,11 @@
 import React from 'react';
 
-export interface Banner300x250AdProps {
+export interface Banner160x300AdProps {
   className?: string;
   showLabel?: boolean;
 }
 
-export const Banner300x250Ad: React.FC<Banner300x250AdProps> = ({
+export const Banner160x300Ad: React.FC<Banner160x300AdProps> = ({
   className = '',
   showLabel = true,
 }) => {
@@ -18,8 +18,8 @@ export const Banner300x250Ad: React.FC<Banner300x250AdProps> = ({
     body {
       margin: 0;
       padding: 0;
-      width: 300px;
-      height: 250px;
+      width: 160px;
+      height: 300px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -31,43 +31,41 @@ export const Banner300x250Ad: React.FC<Banner300x250AdProps> = ({
 <body>
   <script type="text/javascript">
     atOptions = {
-      'key' : '9a118f9349b12043c7b15ea55969f5fd',
+      'key' : 'bc5e69de8ae2c467aac21d2e72af7bab',
       'format' : 'iframe',
-      'height' : 250,
-      'width' : 300,
+      'height' : 300,
+      'width' : 160,
       'params' : {}
     };
   </script>
-  <script type="text/javascript" src="https://www.highrevenueformat.com/9a118f9349b12043c7b15ea55969f5fd/invoke.js"></script>
+  <script type="text/javascript" src="https://www.highrevenueformat.com/bc5e69de8ae2c467aac21d2e72af7bab/invoke.js"></script>
 </body>
 </html>`;
 
   return (
-    <section
-      aria-label="300x250 Advertisement"
-      className={`mx-auto my-8 flex w-full max-w-full flex-col items-center justify-center overflow-hidden px-4 ${className}`}
+    <div
+      aria-label="Skyscraper Advertisement"
+      className={`flex flex-col items-center justify-center overflow-hidden ${className}`}
     >
       {showLabel && (
-        <span className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-          Advertisement
+        <span className="mb-1 text-[9px] font-semibold uppercase tracking-wider text-slate-400 dark:text-[#8b93a1]">
+          Ad
         </span>
       )}
       <div
-        className="flex items-center justify-center overflow-hidden transition-all"
+        className="flex items-center justify-center overflow-hidden"
         style={{
-          width: '300px',
-          height: '250px',
-          maxWidth: '100%',
+          width: '160px',
+          height: '300px',
         }}
       >
         <iframe
-          title="Advertisement 300x250"
-          width={300}
-          height={250}
+          title="Advertisement 160x300"
+          width={160}
+          height={300}
           style={{
-            width: '300px',
-            height: '250px',
-            maxWidth: '100%',
+            width: '160px',
+            height: '300px',
             border: 'none',
             overflow: 'hidden',
             backgroundColor: 'transparent',
@@ -78,6 +76,6 @@ export const Banner300x250Ad: React.FC<Banner300x250AdProps> = ({
           srcDoc={adHtml}
         />
       </div>
-    </section>
+    </div>
   );
 };

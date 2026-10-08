@@ -16,7 +16,13 @@ import { SeoContentSection } from './components/SeoContentSection';
 import { Footer } from './components/Footer';
 import { DownloadHistory } from './components/DownloadHistory';
 import { LegalModal } from './components/LegalModal';
-import { Banner300x250Ad, Banner320x50Ad, SocialBarAd } from './components/ads';
+import {
+  Banner728x90Ad,
+  Banner320x50Ad,
+  Banner160x300Ad,
+  NativeBannerAd,
+  StickyBottomAd,
+} from './components/ads';
 import { HistoryItem } from './types';
 import {
   getDownloadHistory,
@@ -73,7 +79,26 @@ export default function App() {
     <ThemeProvider>
       <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0b0d10] dark:text-white flex flex-col font-sans relative pb-16 sm:pb-20">
         
-        {/* 1. Main website/header */}
+        {/* Desktop Skyscraper Banners (160x300) - Only visible on wide viewports (2xl: >= 1536px) */}
+        <aside
+          aria-label="Side Advertisement Left"
+          className="hidden 2xl:block fixed left-4 top-28 z-20 pointer-events-auto"
+        >
+          <div className="rounded-xl border border-slate-200/80 bg-white/95 p-1.5 shadow-sm backdrop-blur-sm dark:border-[#252a33] dark:bg-[#15181d]/95">
+            <Banner160x300Ad showLabel={true} />
+          </div>
+        </aside>
+
+        <aside
+          aria-label="Side Advertisement Right"
+          className="hidden 2xl:block fixed right-4 top-28 z-20 pointer-events-auto"
+        >
+          <div className="rounded-xl border border-slate-200/80 bg-white/95 p-1.5 shadow-sm backdrop-blur-sm dark:border-[#252a33] dark:bg-[#15181d]/95">
+            <Banner160x300Ad showLabel={true} />
+          </div>
+        </aside>
+
+        {/* 1. Header Navigation */}
         <Header
           onOpenHistory={() => setIsHistoryOpen(true)}
           historyCount={history.length}
@@ -81,36 +106,57 @@ export default function App() {
 
         {/* Main Content Area */}
         <main className="flex-1">
-          {/* 2. Main content / primary functionality */}
+          {/* 2. Hero & Primary Downloader Functionality */}
           <Hero />
           
           <Downloader onSuccessDownload={handleDownloadSuccess} />
 
-          {/* 3. 300x250 advertisement (Below primary functionality) */}
-          <Banner300x250Ad />
+          {/* 3. Primary Post-Download Ad (Highest visibility below the tool) */}
+          <div className="my-6">
+            {/* Desktop / Tablet: 728x90 Leaderboard */}
+            <Banner728x90Ad className="hidden md:flex" />
+            {/* Mobile: 320x50 Banner */}
+            <Banner320x50Ad className="flex md:hidden" />
+          </div>
 
-          {/* 4. Secondary content */}
+          {/* 4. Secondary content: How It Works */}
           <HowItWorks />
 
+          {/* 5. Native Banner Recommendations (High CTR viral content cards) */}
+          <NativeBannerAd />
+
+          {/* 6. Features Grid */}
           <Features />
 
+          {/* 7. Mid-Page Responsive Banner */}
+          <div className="my-8">
+            <Banner728x90Ad className="hidden md:flex" />
+            <Banner320x50Ad className="flex md:hidden" />
+          </div>
+
+          {/* 8. Frequently Asked Questions */}
           <FaqSection />
 
+          {/* 9. SEO Keyword Rich Guide Content */}
           <SeoContentSection />
 
+          {/* 10. About Section */}
           <AboutSection />
 
-          {/* 5. 320x50 banner advertisement (Before footer) */}
-          <Banner320x50Ad />
+          {/* 11. Pre-Footer Responsive Ad */}
+          <div className="my-6">
+            <Banner728x90Ad className="hidden md:flex" />
+            <Banner320x50Ad className="flex md:hidden" />
+          </div>
         </main>
 
-        {/* 6. Footer */}
+        {/* 12. Footer */}
         <Footer
           onOpenLegal={(type) => setLegalModalType(type)}
         />
 
-        {/* 7. Fixed social-bar advertisement at bottom of viewport */}
-        <SocialBarAd />
+        {/* 13. Mobile Floating Sticky Ad Bar (320x50, dismissible) */}
+        <StickyBottomAd className="md:hidden" />
 
         {/* Modals & Overlays */}
         <DownloadHistory
