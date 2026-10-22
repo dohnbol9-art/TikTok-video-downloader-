@@ -50,7 +50,7 @@ export const NativeBannerAd: React.FC<NativeBannerAdProps> = ({
       )}
       <div
         ref={containerRef}
-        className="min-h-[120px] w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-2 sm:p-4 shadow-sm dark:border-[#252a33] dark:bg-[#15181d]"
+        className="relative isolate min-h-[120px] w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-2 sm:p-4 shadow-sm dark:border-[#252a33] dark:bg-[#15181d]"
       />
     </section>
   );

@@ -57,6 +57,7 @@ export const Banner728x90Ad: React.FC<Banner728x90AdProps> = ({
         style={{
           width: '728px',
           height: '90px',
+          maxWidth: '100%',
         }}
       >
         <iframe
@@ -66,6 +67,7 @@ export const Banner728x90Ad: React.FC<Banner728x90AdProps> = ({
           style={{
             width: '728px',
             height: '90px',
+            maxWidth: '100%',
             border: 'none',
             overflow: 'hidden',
             backgroundColor: 'transparent',
