@@ -188,7 +188,7 @@ export const SeoContentSection: React.FC = () => {
             TikTok Video Downloader Without Watermark in HD
           </h2>
           <p className="mt-3 text-sm text-slate-600 dark:text-[#b8bec9] leading-relaxed">
-            <strong>QuickTok</strong> is the world\'s premier free online <strong>TikTok video downloader</strong>, engineered to extract pristine <strong>Full HD 1080p MP4</strong> videos and original studio-quality <strong>MP3 audio</strong> streams directly from TikTok servers without watermarks, user overlays, or compression artifacts.
+            <strong>QuickTok</strong> is the world&apos;s premier free online <strong>TikTok video downloader</strong>, engineered to extract pristine <strong>Full HD 1080p MP4</strong> videos and original studio-quality <strong>MP3 audio</strong> streams directly from TikTok servers without watermarks, user overlays, or compression artifacts.
           </p>
         </div>
 
@@ -370,7 +370,7 @@ export const SeoContentSection: React.FC = () => {
                 <tr className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
                   <td className="p-3.5 sm:p-4 font-medium text-slate-900 dark:text-white">Watermark Removal Quality</td>
                   <td className="p-3.5 sm:p-4 font-semibold text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
-                    <Check className="h-4 w-4 text-emerald-500" /> 100% Clean Clean Stream
+                    <Check className="h-4 w-4 text-emerald-500" /> 100% Clean HD Stream
                   </td>
                   <td className="p-3.5 sm:p-4 text-slate-500">Often blurs or crops edges</td>
                 </tr>

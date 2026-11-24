@@ -352,7 +352,9 @@ export const VideoResultCard = forwardRef<VideoResultCardRef, VideoResultCardPro
           {metadata.thumbnailUrl ? (
             <img
               src={getProxyUrl(metadata.thumbnailUrl)}
-              alt={metadata.title || 'TikTok thumbnail'}
+              alt={metadata.title ? `${metadata.title} TikTok video thumbnail` : 'TikTok video thumbnail'}
+              loading="lazy"
+              decoding="async"
               className="h-full w-full object-cover"
               onError={(e) => {
                 (e.currentTarget as HTMLElement).style.display = 'none';
@@ -380,7 +382,9 @@ export const VideoResultCard = forwardRef<VideoResultCardRef, VideoResultCardPro
               {metadata.author.avatarUrl ? (
                 <img
                   src={getProxyUrl(metadata.author.avatarUrl)}
-                  alt=""
+                  alt={`${metadata.author.nickname || metadata.author.username} avatar`}
+                  loading="lazy"
+                  decoding="async"
                   className="h-5 w-5 rounded-full object-cover border border-rose-100 dark:border-slate-700"
                 />
               ) : (

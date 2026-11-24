@@ -324,6 +324,7 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
               <input
                 ref={inputRef}
                 type="url"
+                aria-label="TikTok video URL"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && validateAndProcess(url)}
@@ -333,7 +334,7 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
               />
               <div className="absolute right-1.5 top-1/2 flex -translate-y-1/2 items-center gap-1">
                 {url && (
-                  <button onClick={handleClear} className="p-1 text-slate-400 hover:text-slate-600"><X className="h-3.5 w-3.5" /></button>
+                  <button onClick={handleClear} aria-label="Clear URL input" className="p-1 text-slate-400 hover:text-slate-600"><X className="h-3.5 w-3.5" /></button>
                 )}
                 <button onClick={handlePaste} className="flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-bold text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-800">
                   <Clipboard className="h-3 w-3" />
@@ -345,6 +346,7 @@ export const Downloader: React.FC<DownloaderProps> = ({ onSuccessDownload }) => 
             <div className="relative">
               <textarea
                 ref={textareaRef}
+                aria-label="Multiple TikTok video URLs, one per line"
                 value={batchUrls}
                 onChange={(e) => setBatchUrls(e.target.value)}
                 placeholder="https://www.tiktok.com/@user/video/123...&#10;https://vm.tiktok.com/XYZ..."

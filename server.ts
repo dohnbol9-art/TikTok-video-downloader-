@@ -26,21 +26,11 @@ app.get('/sitemap.xml', (req, res) => {
   res.sendFile(filePath, (err) => {
     if (err) {
       res.status(200).send(`<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.quicktok.online/</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.quicktok.online/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.quicktok.online/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.quicktok.online/#es" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.quicktok.online/#pt" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.quicktok.online/#id" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.quicktok.online/#fr" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.quicktok.online/#de" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://www.quicktok.online/#vi" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.quicktok.online/#tr" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.quicktok.online/#ar" />
-    <lastmod>2026-10-25</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 </urlset>`);

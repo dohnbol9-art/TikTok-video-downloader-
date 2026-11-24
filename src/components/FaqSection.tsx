@@ -87,11 +87,16 @@ export const FaqSection: React.FC = () => {
                 />
               </button>
 
-              {isOpen && (
-                <div className="px-5 pb-5 sm:px-6 sm:pb-6 text-sm leading-relaxed text-slate-600 dark:text-[#b8bec9]">
-                  {faq.answer}
-                </div>
-              )}
+              <div
+                className={
+                  isOpen
+                    ? 'px-5 pb-5 sm:px-6 sm:pb-6 text-sm leading-relaxed text-slate-600 dark:text-[#b8bec9]'
+                    : 'hidden'
+                }
+                aria-hidden={!isOpen}
+              >
+                {faq.answer}
+              </div>
             </div>
           );
         })}

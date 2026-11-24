@@ -56,6 +56,7 @@ export const DownloadHistory: React.FC<DownloadHistoryProps> = ({
             <button
               type="button"
               onClick={onClose}
+              aria-label="Close download history modal"
               className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200"
             >
               <X className="h-4 w-4" />
@@ -85,7 +86,9 @@ export const DownloadHistory: React.FC<DownloadHistoryProps> = ({
                     {item.thumbnailUrl ? (
                       <img
                         src={getProxyUrl(item.thumbnailUrl)}
-                        alt=""
+                        alt={item.title ? `${item.title} thumbnail` : 'Downloaded TikTok video thumbnail'}
+                        loading="lazy"
+                        decoding="async"
                         className="h-full w-full object-cover"
                         onError={(e) => {
                           (e.currentTarget as HTMLElement).style.display = 'none';

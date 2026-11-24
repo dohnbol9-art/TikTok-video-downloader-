@@ -5,7 +5,7 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/((?!api/).*)",
+      "source": "/((?!api/|assets/|sitemap\\.xml|robots\\.txt|favicon\\.ico|favicon\\.svg|favicon-.*\\.png|apple-touch-icon\\.png|icon-.*\\.png|site\\.webmanifest|googled91a354348873e1b\\.html|quicktok-tiktok-downloader-preview\\.jpg).*)",
       "destination": "/index.html"
     }
   ]
