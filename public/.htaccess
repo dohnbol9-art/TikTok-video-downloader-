@@ -2,6 +2,13 @@
   RewriteEngine On
   RewriteBase /
   RewriteRule ^index\.html$ - [L]
+
+  # Serve clean URLs directly from pre-rendered .html files (e.g. /tiktok-to-mp3 -> tiktok-to-mp3.html)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+
+  # Fallback to SPA index.html if no static file or directory exists
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
@@ -11,6 +18,7 @@
   AddType application/javascript .js .mjs
   AddType text/css .css
   AddType image/svg+xml .svg
+  AddType application/manifest+json .webmanifest
 </IfModule>
 
 # Security Headers for Apache/Hostinger

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ENGLISH_GUIDE_LINKS, INTL_LINKS } from '../seo/landingPages';
 
 interface FooterProps {
   onOpenLegal: (type: 'terms' | 'privacy') => void;
@@ -41,11 +42,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
 
           {/* Links */}
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-slate-600 dark:text-[#b8bec9]">
-            <a href="#downloader" className="hover:text-rose-500">Downloader</a>
-            <a href="#how-it-works" className="hover:text-rose-500">How It Works</a>
-            <a href="#features" className="hover:text-rose-500">Features</a>
-            <a href="#faq" className="hover:text-rose-500">FAQ</a>
-            <a href="#about" className="hover:text-rose-500">About</a>
+            <a href="/#downloader" className="hover:text-rose-500">Downloader</a>
+            <a href="/#how-it-works" className="hover:text-rose-500">How It Works</a>
+            <a href="/#features" className="hover:text-rose-500">Features</a>
+            <a href="/#faq" className="hover:text-rose-500">FAQ</a>
+            <a href="/#about" className="hover:text-rose-500">About</a>
             <button
               type="button"
               onClick={() => onOpenLegal('terms')}
@@ -63,7 +64,33 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-slate-100 pt-6 text-center text-xs text-slate-400 dark:border-slate-800 dark:text-slate-500">
+        {/* Crawlable SEO Guides & International Language Links */}
+        <div className="mt-6 border-t border-slate-100 pt-5 space-y-2.5 text-[11px] text-slate-500 dark:border-slate-800 dark:text-[#b8bec9]">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 sm:justify-start">
+            <span className="font-semibold text-slate-700 dark:text-slate-300">Guides:</span>
+            {ENGLISH_GUIDE_LINKS.map((link) => (
+              <a key={link.href} href={link.href} className="hover:text-rose-500">
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 sm:justify-start">
+            <span className="font-semibold text-slate-700 dark:text-slate-300">Languages:</span>
+            <a href="/" hrefLang="en" className="hover:text-rose-500">English</a>
+            {INTL_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                hrefLang={link.href.replace(/\//g, '')}
+                className="hover:text-rose-500"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6 border-t border-slate-100 pt-6 text-center text-xs text-slate-400 dark:border-slate-800 dark:text-slate-500">
           <p>
             &copy; {new Date().getFullYear()} QuickTok. QuickTok is an independent web utility and is not affiliated, endorsed, or partnered with TikTok Inc. or ByteDance Ltd.
           </p>

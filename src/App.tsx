@@ -16,6 +16,8 @@ import { SeoContentSection } from './components/SeoContentSection';
 import { Footer } from './components/Footer';
 import { DownloadHistory } from './components/DownloadHistory';
 import { LegalModal } from './components/LegalModal';
+import { LandingPageView } from './components/LandingPageView';
+import { findLandingPageByPath } from './seo/landingPages';
 import {
   Banner728x90Ad,
   Banner320x50Ad,
@@ -32,6 +34,9 @@ import {
 } from './utils/history';
 
 export default function App() {
+  const matchedLandingPage =
+    typeof window !== 'undefined' ? findLandingPageByPath(window.location.pathname) : undefined;
+
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [legalModalType, setLegalModalType] = useState<'terms' | 'privacy' | null>(null);
@@ -74,6 +79,14 @@ export default function App() {
     clearDownloadHistory();
     setHistory([]);
   };
+
+  if (matchedLandingPage) {
+    return (
+      <ThemeProvider>
+        <LandingPageView page={matchedLandingPage} />
+      </ThemeProvider>
+    );
+  }
 
   return (
     <ThemeProvider>

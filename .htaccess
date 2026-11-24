@@ -10,6 +10,10 @@
   RewriteCond dist/$1 -d
   RewriteRule ^(.*)$ dist/$1 [L]
 
+  # If requested path matches a pre-rendered HTML page inside dist/, serve it directly
+  RewriteCond dist/$1.html -f
+  RewriteRule ^(.+?)/?$ dist/$1.html [L]
+
   # Route all other requests and SPA paths to dist/index.html
   RewriteCond dist/index.html -f
   RewriteRule ^.*$ dist/index.html [L]

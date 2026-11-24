@@ -3,9 +3,10 @@
   "installCommand": "npm install --legacy-peer-deps",
   "outputDirectory": "dist",
   "framework": "vite",
+  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/((?!api/|assets/|sitemap\\.xml|robots\\.txt|favicon\\.ico|favicon\\.svg|favicon-.*\\.png|apple-touch-icon\\.png|icon-.*\\.png|site\\.webmanifest|googled91a354348873e1b\\.html|quicktok-tiktok-downloader-preview\\.jpg).*)",
+      "source": "/((?!api/|assets/|es/?$|pt/?$|fr/?$|de/?$|ar/?$|id/?$|tiktok-downloader-without-watermark$|tiktok-video-downloader-hd$|tiktok-to-mp3$|download-tiktok-videos-iphone$|download-tiktok-videos-android$|how-to-download-tiktok-videos$|tiktok-mp4-downloader$|sitemap\\.xml|robots\\.txt|favicon\\.ico|favicon\\.svg|favicon-.*\\.png|apple-touch-icon\\.png|icon-.*\\.png|site\\.webmanifest|googled91a354348873e1b\\.html|quicktok-tiktok-downloader-preview\\.jpg).*)",
       "destination": "/index.html"
     }
   ]
